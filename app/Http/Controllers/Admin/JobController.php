@@ -163,9 +163,11 @@ class JobController extends Controller
     }
 
     public function manage_session(Request $request) {
+        
         if($request->lang_locale != ""){
             $lang_locale = session(['lang_locale' => $request->lang_locale]);
-            return redirect()->route($request->route);
+            //return redirect()->route($request->route);
+            return redirect()->back();
         }
     }
 }

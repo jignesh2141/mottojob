@@ -46,5 +46,9 @@ Route::group(['prefix' => 'admin-panel'], function () {
 
 	    /* Manage Session */
 	    Route::post('/manage-session', "Admin\JobController@manage_session")->name('manageSession');
+
+	    /* Settings */
+	    Route::get('/setting', "Admin\SettingController@index")->name('setting');
+	    Route::post('/save-setting', "Admin\SettingController@store")->name('saveSetting');
 	});
 });

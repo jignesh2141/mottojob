@@ -7,6 +7,8 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Session;
+use Config;
 
 class AdminUserController extends Controller
 {
@@ -36,6 +38,12 @@ class AdminUserController extends Controller
     }
 
     public function adminDashboard(){
+      if(!Session::has('lang_locale')){
+          $lang_locale = Config::get('app.locale');
+          session(['lang_locale' => $lang_locale]);
+      } else {
+          $lang_locale = Session::get('lang_locale');
+      }
       return view('admin.dashboard');
     }
 

@@ -20,10 +20,13 @@
                     </li>
                     <h3 class="menu-title">Job Section</h3><!-- /.menu-title -->
                     <li>
-                        <a href="{{route('jobs')}}"> <i class="menu-icon ti-email"></i>Jobs </a>
+                        <a href="{{route('jobs')}}"> <i class="menu-icon ti-slice"></i>Jobs </a>
                     </li> 
                     <li>
                         <a href="{{route('pages')}}"> <i class="menu-icon ti-email"></i>Pages </a>
+                    </li>
+                    <li>
+                        <a href="{{route('setting')}}"> <i class="menu-icon ti-settings"></i>Settings </a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

@@ -58,6 +58,8 @@ class PageController extends Controller
         $page->title = $request->en_title;
         $page->slug = $request->en_slug;
         $page->description = $request->en_description;
+        $page->meta_keywords = $request->en_meta_keywords;
+        $page->meta_description = $request->en_meta_description;
         $page->save();
 
         $page = new Page();
@@ -66,6 +68,8 @@ class PageController extends Controller
         $page->title = $request->ja_title;
         $page->slug = $request->ja_slug;
         $page->description = $request->ja_description;
+        $page->meta_keywords = $request->ja_meta_keywords;
+        $page->meta_description = $request->ja_meta_description;
         $page->save();
         
         return redirect()->route('pages')
@@ -92,6 +96,8 @@ class PageController extends Controller
         $page->title = $request->en_title;
         $page->slug = $request->en_slug;
         $page->description = $request->en_description;
+        $page->meta_keywords = $request->en_meta_keywords;
+        $page->meta_description = $request->en_meta_description;
         $page->save();
 
         $page = Page::find($request->ja_id);
@@ -100,6 +106,8 @@ class PageController extends Controller
         $page->title = $request->ja_title;
         $page->slug = $request->ja_slug;
         $page->description = $request->ja_description;
+        $page->meta_keywords = $request->ja_meta_keywords;
+        $page->meta_description = $request->ja_meta_description;
         $page->save();
         
         return redirect()->route('pages')
