@@ -16,17 +16,17 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href={{route('adminDashboard')}}> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href={{route('adminDashboard')}}> <i class="menu-icon fa fa-dashboard"></i> {{ trans('page.dashboard') }}</a>
                     </li>
-                    <h3 class="menu-title">Job Section</h3><!-- /.menu-title -->
+                    <h3 class="menu-title"> Sections</h3><!-- /.menu-title -->
                     <li>
-                        <a href="{{route('jobs')}}"> <i class="menu-icon ti-slice"></i>Jobs </a>
+                        <a href="{{route('jobs')}}"> <i class="menu-icon ti-slice"></i> {{ trans('page.jobs') }}</a>
                     </li> 
                     <li>
-                        <a href="{{route('pages')}}"> <i class="menu-icon ti-email"></i>Pages </a>
+                        <a href="{{route('pages')}}"> <i class="menu-icon ti-email"></i> {{ trans('page.pages') }} </a>
                     </li>
                     <li>
-                        <a href="{{route('setting')}}"> <i class="menu-icon ti-settings"></i>Settings </a>
+                        <a href="{{route('setting')}}"> <i class="menu-icon ti-settings"></i>{{ trans('page.settings') }} </a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

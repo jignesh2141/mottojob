@@ -32,16 +32,12 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        
-                                        
                                           <select name="lang_locale" id="lang_locale" class="form-control">
-                                            <option value="0">Please select</option>
                                             <option {{ Session::get('lang_locale') == "en" ? 'selected':''}} value="en">EN</option>
                                             <option {{ Session::get('lang_locale') == "ja" ? 'selected':''}} value="ja">にほんご</option>
                                           </select>
                                           {{ csrf_field() }}
                                           <input type="hidden" name="route" value="jobs">
-                                        
                                     </div>
                                 </div>
                                 

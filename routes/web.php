@@ -25,6 +25,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::group(['prefix' => 'admin-panel'], function () {
 	
+	//$lang_locale = Session::get('lang_locale');
+    
 	Route::get('/', "Admin\AdminUserController@login");
 	Route::get('/login', "Admin\AdminUserController@login");
 	Route::post('/admin-login', "Admin\AdminUserController@validateLogin")->name('adminLoginValidate');

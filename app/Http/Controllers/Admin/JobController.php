@@ -21,19 +21,14 @@ class JobController extends Controller
      */
     public function index()
     {
-        if(!Session::has('lang_locale')){
-            $lang_locale = Config::get('app.locale');
-            session(['lang_locale' => $lang_locale]);
-        } else {
-            $lang_locale = Session::get('lang_locale');
-        }
-        
+        $lang_locale = Session::get('lang_locale');
         $jobs = Job::where('lang',$lang_locale)->orderBy('id','desc')->paginate(config('common.pagination.item_per_page'));
         return view('admin.jobs.jobs',['jobs'=>$jobs]);
     }
 
     public function add_job($id = null)
     {
+        
         if ($id == null) {
             $job = new Job();
             return view('admin.jobs.job')->with(compact('job'));
@@ -165,6 +160,7 @@ class JobController extends Controller
     public function manage_session(Request $request) {
         
         if($request->lang_locale != ""){
+            App::setLocale($request->lang_locale);
             $lang_locale = session(['lang_locale' => $request->lang_locale]);
             //return redirect()->route($request->route);
             return redirect()->back();

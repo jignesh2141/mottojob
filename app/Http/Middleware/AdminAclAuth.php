@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\AdminAcl;
+use Session,Config;
 
 class AdminAclAuth
 {
@@ -16,6 +17,13 @@ class AdminAclAuth
      */
     public function handle($request, Closure $next){
       // TO DO remove
+      if(!Session::has('lang_locale')){
+          $lang_locale = Config::get('app.locale');
+          session(['lang_locale' => $lang_locale]);
+      } else {
+          $lang_locale = Session::get('lang_locale');
+      }
+      app()->setLocale(session()->get('lang_locale'));
       if($request->session()->has('user') && $request->session()->has('account_type') == 'Admin'){
         return $next($request);
       }

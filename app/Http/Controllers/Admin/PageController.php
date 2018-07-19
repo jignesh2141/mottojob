@@ -14,15 +14,8 @@ use Config;
 
 class PageController extends Controller
 {
-    //
     public function index(){
-        if(!Session::has('lang_locale')){
-            $lang_locale = Config::get('app.locale');
-            session(['lang_locale' => $lang_locale]);
-        } else {
-            $lang_locale = Session::get('lang_locale');
-        }
-
+        $lang_locale = Session::get('lang_locale');
     	$pages = Page::where('lang',$lang_locale)->orderBy('id','desc')->paginate(config('common.pagination.item_per_page'));
         return view('admin.pages.pages',['pages'=>$pages]);
     }

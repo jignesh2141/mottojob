@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Session;
 use Config;
+use App;
 
 class AdminUserController extends Controller
 {
@@ -44,6 +45,7 @@ class AdminUserController extends Controller
       } else {
           $lang_locale = Session::get('lang_locale');
       }
+      App::setLocale($lang_locale);
       return view('admin.dashboard');
     }
 
