@@ -30,27 +30,27 @@
 
                     <div class="card">
                       <div class="card-header">
-                        <strong>Setting</strong> Page
+                        <strong>{{ trans('page.settings') }}</strong>
                       </div>
                       <div class="card-body card-block">
                           <div class="row form-group">
-                            <div class="col col-md-2"><label for="text-input" class=" form-control-label">Title</label></div>
+                            <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('page.title') }}</label></div>
                             <div class="col-12 col-md-8"><input type="text" id="text-input" name="title" placeholder="Title" class="form-control" value="{{ $setting[0]->title }}"></div>
                           </div>
                           
                           
                           <div class="row form-group">
-                            <div class="col col-md-2"><label for="text-input" class=" form-control-label">Meta Keywords</label></div>
+                            <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('page.meta_keywords') }}</label></div>
                             <div class="col-12 col-md-8"><textarea name="meta_keywords" id="meta_keywords" rows="9" placeholder="Keywords" class="form-control">{{ $setting[0]->meta_keywords }}</textarea></div>
                           </div>
                           <div class="row form-group">
-                            <div class="col col-md-2"><label for="text-input" class=" form-control-label">Meta Description</label></div>
+                            <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('page.meta_description') }}</label></div>
                             <div class="col-12 col-md-8"><textarea name="meta_description" id="meta_description" rows="9" placeholder="Description" class="form-control">{{ $setting[0]->meta_description }}</textarea></div>
                           </div>
                       </div>
                       <div class="card-footer">
                         <button type="submit" class="btn btn-primary btn-sm">
-                          <i class="fa fa-dot-circle-o"></i> Submit
+                          <i class="fa fa-dot-circle-o"></i> {{ trans('page.submit') }}
                         </button>
                       </div>
                     </div>

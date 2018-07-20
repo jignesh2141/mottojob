@@ -23,6 +23,19 @@
                       </div>
                       <div class="card-body card-block">
                           <div class="row form-group">
+                            <div class="col col-md-2"></div>
+                            <div class="col-12 col-md-5">
+                              <div class="card-title">
+                                  <h4 class="text-center">English</h4>
+                              </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                              <div class="card-title">
+                                  <h4 class="text-center">Japanese</h4>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row form-group">
                             <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('page.title') }}</label></div>
                             <div class="col-12 col-md-5"><input type="text" id="text-input" name="en_title" placeholder="{{ trans('page.title') }}" class="form-control" value="{{ $en_page[0]->title }}"></div>
                             <div class="col-12 col-md-5"><input type="text" id="text-input" name="ja_title" placeholder="{{ trans('page.title') }}" class="form-control" value="{{ $ja_page[0]->title }}"></div>

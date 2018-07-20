@@ -15,17 +15,17 @@
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active">
+                    <li class="{{ (Request::route()->getName() == 'adminDashboard') ? 'active' : '' }}">
                         <a href={{route('adminDashboard')}}> <i class="menu-icon fa fa-dashboard"></i> {{ trans('page.dashboard') }}</a>
                     </li>
-                    <h3 class="menu-title"> Sections</h3><!-- /.menu-title -->
-                    <li>
+                    <!-- <h3 class="menu-title"> Sections</h3> --><!-- /.menu-title -->
+                    <li class="{{ (Request::route()->getName() == 'jobs') ? 'active' : '' }}">
                         <a href="{{route('jobs')}}"> <i class="menu-icon ti-slice"></i> {{ trans('page.jobs') }}</a>
                     </li> 
-                    <li>
+                    <li class="{{ (Request::route()->getName() == 'pages') ? 'active' : '' }}">
                         <a href="{{route('pages')}}"> <i class="menu-icon ti-email"></i> {{ trans('page.pages') }} </a>
                     </li>
-                    <li>
+                    <li class="{{ (Request::route()->getName() == 'setting') ? 'active' : '' }}">
                         <a href="{{route('setting')}}"> <i class="menu-icon ti-settings"></i>{{ trans('page.settings') }} </a>
                     </li>
                 </ul>

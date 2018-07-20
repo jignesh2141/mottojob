@@ -57,15 +57,14 @@ class JobController extends Controller
             'en_description' => 'required',
             'en_requirements' => 'required',
             'en_no_of_vacancy' => 'required',
+            'en_company_email' => 'email',
             'ja_title' => 'required',
             'ja_corporate_name' => 'required',
-            'ja_job_type' => 'required',
-            'ja_prefecture' => 'required',
-            'ja_japanese_lavel' => 'required',
             'ja_location' => 'required',
             'ja_description' => 'required',
             'ja_requirements' => 'required',
             'ja_no_of_vacancy' => 'required',
+            'ja_company_email' => 'email',
         ]);
         
         $id = DB::table('job')->insertGetId([]);
@@ -77,13 +76,20 @@ class JobController extends Controller
             $job->lang = $value;
             $job->title = $request->{$value.'_title'};
             $job->corporate_name = $request->{$value.'_corporate_name'};
-            $job->job_type = $request->{$value.'_job_type'};
-            $job->prefecture = $request->{$value.'_prefecture'};
-            $job->japanese_lavel = $request->{$value.'_japanese_lavel'};
+            $job->job_type = $request->en_job_type;
+            $job->prefecture = $request->en_prefecture;
+            $job->japanese_lavel = $request->en_japanese_lavel;
             $job->location = $request->{$value.'_location'};
             $job->description = $request->{$value.'_description'};
             $job->requirements = $request->{$value.'_requirements'};
             $job->no_of_vacancy = $request->{$value.'_no_of_vacancy'};
+            $job->minimum_working_days_per_week = $request->{$value.'_minimum_working_days_per_week'};
+            $job->minimum_working_hours_per_day = $request->{$value.'_minimum_working_hours_per_day'};
+            $job->community_expenses = $request->{$value.'_community_expenses'};
+            $job->benefits = $request->{$value.'_benefits'};
+            $job->salary = $request->{$value.'_salary'};
+            $job->timing = $request->{$value.'_timing'};
+            $job->company_email = $request->{$value.'_company_email'};
             $job->save();
         }
         
@@ -110,15 +116,14 @@ class JobController extends Controller
             'en_description' => 'required',
             'en_requirements' => 'required',
             'en_no_of_vacancy' => 'required',
+            'en_company_email' => 'email',
             'ja_title' => 'required',
             'ja_corporate_name' => 'required',
-            'ja_job_type' => 'required',
-            'ja_prefecture' => 'required',
-            'ja_japanese_lavel' => 'required',
             'ja_location' => 'required',
             'ja_description' => 'required',
             'ja_requirements' => 'required',
             'ja_no_of_vacancy' => 'required',
+            'ja_company_email' => 'email',
         ]);
 
         if($request->en_id && $request->ja_id){
@@ -129,13 +134,20 @@ class JobController extends Controller
                 $job->lang = $key;
                 $job->title = $request->{$key.'_title'};
                 $job->corporate_name = $request->{$key.'_corporate_name'};
-                $job->job_type = $request->{$key.'_job_type'};
-                $job->prefecture = $request->{$key.'_prefecture'};
-                $job->japanese_lavel = $request->{$key.'_japanese_lavel'};
+                $job->job_type = $request->en_job_type;
+                $job->prefecture = $request->en_prefecture;
+                $job->japanese_lavel = $request->en_japanese_lavel;
                 $job->location = $request->{$key.'_location'};
                 $job->description = $request->{$key.'_description'};
                 $job->requirements = $request->{$key.'_requirements'};
                 $job->no_of_vacancy = $request->{$key.'_no_of_vacancy'};
+                $job->minimum_working_days_per_week = $request->{$value.'_minimum_working_days_per_week'};
+                $job->minimum_working_hours_per_day = $request->{$value.'_minimum_working_hours_per_day'};
+                $job->community_expenses = $request->{$value.'_community_expenses'};
+                $job->benefits = $request->{$value.'_benefits'};
+                $job->salary = $request->{$value.'_salary'};
+                $job->timing = $request->{$value.'_timing'};
+                $job->company_email = $request->{$value.'_company_email'};
                 $job->save();
             }
         }
