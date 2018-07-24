@@ -1,0 +1,41 @@
+*{margin: 0;padding: 0;text-decoration: none;list-style: none;outline: 0;}
+
+body{	font-family: 'Raleway', sans-serif;	font-size: 14px;	font-weight: 400;	color: #777;}
+
+h1{	font-size: 36px;	font-weight: bold;	color: #555;}
+h2{	font-size: 30px;	font-weight: bold;	color: #555;}
+h3{	font-size: 24px;	font-weight: bold;	color: #333;}
+
+.no-padding{padding: 0px;}
+.p-r-0{padding-right: 0px;}
+.p-l-0{padding-left: 0px;}
+.p-b-0{padding-bottom: 0px;}
+.p-t-0{padding-top: 0px;}
+.p-r-10{padding-right: 10px;}
+.p-l-10{padding-left: 10px;}
+.no-margin{margin: 0px;}
+.m-r-0{margin-right: 0px;}
+.m-l-0{margin-left: 0px;}
+.m-b-0{margin-bottom: 0px;}
+.m-t-0{margin-top: 0px;}
+.m-r-10{margin-right: 10px;}
+.m-l-10{margin-left: 10px;}
+
+.primary{	color: #e74c3c;}
+.primary-bg{	background-color: #e74c3c;}
+.secondary-orange{	color: #ff9f00;}
+.secondary-orange-bg{	background-color: #ff9f00;}
+.secondary-sky-blue{	color: #2d82d8;}
+.secondary-sky-blue-bg{	background-color: #2d82d8;}
+.sky-blue-bg{	background-color: #2d82d8!important;}
+a{transition: all 0.3s ease-in;-webkit-transition: all 0.3s ease-in;    -moz-transition: all 0.3s ease-in;    -o-transition: all 0.3s ease-in;}
+a:hover{	text-decoration: none;}
+ul{	list-style: none;}
+ul li{	display: inline-block;}
+ol,ul{	margin-bottom: 0px;}
+
+.section-padding{	padding: 75px 0;}
+.white{color: #fff;}
+.bg-white{background: #fff;}
+.bg-gray{background: #f4f5f6;}
+.bold{font-weight: bold;}

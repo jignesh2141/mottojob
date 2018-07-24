@@ -17,10 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::group(['middleware' => ['auth']], function () {
-  Route::get('/home', 'AuthUsersController@index')->name('home');
+  Route::get('/home', 'HomeController@index')->name('home');
+  Route::get('/jobs', 'JobController@index')->name('mottojobs');
+  Route::get('/job', 'JobController@get_job')->name('jobDetails');
+  Route::get('/apply-form', 'JobController@apply_form')->name('applyForm');
 });
 
 Route::group(['prefix' => 'admin-panel'], function () {
@@ -28,7 +29,7 @@ Route::group(['prefix' => 'admin-panel'], function () {
 	//$lang_locale = Session::get('lang_locale');
     
 	Route::get('/', "Admin\AdminUserController@login");
-	Route::get('/login', "Admin\AdminUserController@login");
+	Route::get('/admin-login', "Admin\AdminUserController@login")->name('adminLoginForm');
 	Route::post('/admin-login', "Admin\AdminUserController@validateLogin")->name('adminLoginValidate');
 	Route::group(['middleware' => ['AdminAcl']], function () {
 		Route::get('/dashboard', "Admin\AdminUserController@adminDashboard")->name('adminDashboard');

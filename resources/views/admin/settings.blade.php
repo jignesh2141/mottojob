@@ -41,11 +41,11 @@
                           
                           <div class="row form-group">
                             <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('page.meta_keywords') }}</label></div>
-                            <div class="col-12 col-md-8"><textarea name="meta_keywords" id="meta_keywords" rows="9" placeholder="Keywords" class="form-control">{{ $setting[0]->meta_keywords }}</textarea></div>
+                            <div class="col-12 col-md-8"><textarea name="meta_keywords" rows="9" placeholder="Keywords" class="form-control">{{ $setting[0]->meta_keywords }}</textarea></div>
                           </div>
                           <div class="row form-group">
                             <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('page.meta_description') }}</label></div>
-                            <div class="col-12 col-md-8"><textarea name="meta_description" id="meta_description" rows="9" placeholder="Description" class="form-control">{{ $setting[0]->meta_description }}</textarea></div>
+                            <div class="col-12 col-md-8"><textarea name="meta_description" rows="9" placeholder="Description" class="form-control">{{ $setting[0]->meta_description }}</textarea></div>
                           </div>
                       </div>
                       <div class="card-footer">
@@ -59,10 +59,4 @@
 
 
         </div> <!-- .content -->
-
-        <script>
-            CKEDITOR.replace( 'meta_keywords' );
-            CKEDITOR.replace( 'meta_description' );
-        </script>
-
 @endsection

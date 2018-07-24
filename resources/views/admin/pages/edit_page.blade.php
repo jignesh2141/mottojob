@@ -52,13 +52,13 @@
                           </div>
                           <div class="row form-group">
                             <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('page.meta_keywords') }}</label></div>
-                            <div class="col-12 col-md-5"><textarea name="en_meta_keywords" id="en_meta_keywords" rows="9" class="form-control">{{ $en_page[0]->meta_keywords }}</textarea></div>
-                            <div class="col-12 col-md-5"><textarea name="ja_meta_keywords" id="ja_meta_keywords" rows="9" class="form-control">{{ $ja_page[0]->meta_keywords }}</textarea></div>
+                            <div class="col-12 col-md-5"><textarea name="en_meta_keywords" rows="9" class="form-control">{{ $en_page[0]->meta_keywords }}</textarea></div>
+                            <div class="col-12 col-md-5"><textarea name="ja_meta_keywords" rows="9" class="form-control">{{ $ja_page[0]->meta_keywords }}</textarea></div>
                           </div>
                           <div class="row form-group">
                             <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('page.meta_description') }}</label></div>
-                            <div class="col-12 col-md-5"><textarea name="en_meta_description" id="en_meta_description" rows="9" class="form-control">{{ $en_page[0]->meta_description }}</textarea></div>
-                            <div class="col-12 col-md-5"><textarea name="ja_meta_description" id="ja_meta_description" rows="9" class="form-control">{{ $ja_page[0]->meta_description }}</textarea></div>
+                            <div class="col-12 col-md-5"><textarea name="en_meta_description" rows="9" class="form-control">{{ $en_page[0]->meta_description }}</textarea></div>
+                            <div class="col-12 col-md-5"><textarea name="ja_meta_description" rows="9" class="form-control">{{ $ja_page[0]->meta_description }}</textarea></div>
                           </div>
 
                           <input type="hidden" name="en_id" value="{{ $en_page[0]->id }}">
@@ -83,10 +83,6 @@
         <script>
             CKEDITOR.replace( 'en_description' );
             CKEDITOR.replace( 'ja_description' );
-            CKEDITOR.replace( 'en_meta_keywords' );
-            CKEDITOR.replace( 'ja_meta_keywords' );
-            CKEDITOR.replace( 'en_meta_description' );
-            CKEDITOR.replace( 'ja_meta_description' );
         </script>
 
    @endsection
