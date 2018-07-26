@@ -64,5 +64,6 @@ class Kernel extends HttpKernel
         'localeSessionRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
         'localeViewPath' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
         'AdminAcl' => \App\Http\Middleware\AdminAclAuth::class,
+        'LanguageLocale' => \App\Http\Middleware\LanguageLocaleCheck::class,
     ];
 }

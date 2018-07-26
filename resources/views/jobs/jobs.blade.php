@@ -130,278 +130,89 @@
                     </div>
 
                     <div class="row">
+                        @foreach($jobs as $job)
                         <div class="col-md-6 col-sm-6">
                             <div class="job-list-box">
-                                <h4>Part-time Staff in Japanese Restaurant! (N4 or Daily conversation)</h4>
+                                <h4>{{$job->title}}</h4>
                                 <div class="job-list-thumb">
-                                    <img src="images/blog-1.jpg" alt="MottoJob" class="img-responsive">
+                                    <img src="{{ asset('images/blog-1.jpg') }}" alt="MottoJob" class="img-responsive">
                                 </div>
                                 <ul class="list-box-detail">
                                     <li>
                                         <label>Salary</label>
-                                        <span>930+ yen/ Hour</span>
+                                        <span>{{$job->salary}}</span>
                                     </li>
                                     <li>
                                         <label>Location</label>
                                         <span>
-                                            <p>Tokyo, Shibuya. </p>
-                                            <p>(2 minutes from shibuya station)</p>
+                                            <p>{{$job->location}}</p>
                                         </span>
 
                                     </li>
                                     <li>
                                         <label>Japanse</label>
-                                        <span>JLPT N1</span>
+                                        <span>{{$job->japanese_lavel}}</span>
                                     </li>
                                     <li>
                                         <label>Hours</label>
                                         <span>
-                                            <p>9:00~17:00、10:00~19:00 17:30~22:30<p>
-                                            </span>
-                                        </li>
-                                    </ul>
-                                    <div class="show-job-detail">
-                                        <a href="{{route('jobDetails')}}">Show Job Details</a>
-                                    </div>
-                                </div>
-                                <div class="ribbon">New!</div>
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="job-list-box">
-                                    <h4>Waiter / waitress & Kitchen staff at a seafood izakaya!</h4>
-                                    <div class="job-list-thumb">
-                                        <img src="images/blog-1.jpg" alt="MottoJob" class="img-responsive">
-                                    </div>
-                                    <ul class="list-box-detail">
-                                        <li>
-                                            <label>Salary</label>
-                                            <span>850+ yen/ Hour</span>
-                                        </li>
-                                        <li>
-                                            <label>Location</label>
-                                            <span>
-                                                <p>Tokyo, Shibuya. </p>
-                                                <!-- <p>(2 minutes from shibuya station)</p> -->
-                                            </span>
-
-                                        </li>
-                                        <li>
-                                            <label>Japanse</label>
-                                            <span>JLPT N3 or higher</span>
-                                        </li>
-                                        <li>
-                                            <label>Hours</label>
-                                            <span>
-                                                <p>10:00~19:00 17:30~22:30<p>
-                                                </span>
-                                            </li>
-                                        </ul>
-                                        <div class="show-job-detail">
-                                            <a href="{{route('jobDetails')}}">Show Job Details</a>
-                                        </div>
-                                    </div>
-                                    <div class="ribbon">New!</div>
+                                            <p>{{$job->timing}}</p>
+                                        </span>
+                                    </li>
+                                </ul>
+                                <div class="show-job-detail">
+                                    <a href="{{route('jobDetails',['job_id'=>$job->job_id])}}">Show Job Details</a>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="job-list-box">
-                                        <h4>Ramen shop genki</h4>
-                                        <div class="job-list-thumb">
-                                            <img src="images/blog-1.jpg" alt="MottoJob" class="img-responsive">
-                                        </div>
-                                        <ul class="list-box-detail">
-                                            <li>
-                                                <label>Salary</label>
-                                                <span>1000+ yen/ Hour</span>
-                                            </li>
-                                            <li>
-                                                <label>Location</label>
-                                                <span>
-                                                    <p>Wakayama, tanabe</p>
-                                                    <p>(23 minutes from Wakayama station)</p>
-                                                </span>
-
-                                            </li>
-                                            <li>
-                                                <label>Japanse</label>
-                                                <span>JLPT N3 or higher</span>
-                                            </li>
-                                            <li>
-                                                <label>Hours</label>
-                                                <span>
-                                                    <p>9:00~17:00、10:00~19:00 17:30~22:30<p>
-                                                        <p>20:00~22:00, 24:00~27:00<p>
-                                                </span>
-                                            </li>
-                                        </ul>
-                                        <div class="show-job-detail">
-                                            <a href="{{route('jobDetails')}}">Show Job Details</a>
-                                        </div>
-                                    </div>
-                                    <div class="ribbon">New!</div>
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="job-list-box">
-                                        <h4>Work in the macha cafe at the heart of gion and super cute and very high paid job is this one so…</h4>
-                                        <div class="job-list-thumb">
-                                            <img src="images/blog-1.jpg" alt="MottoJob" class="img-responsive">
-                                        </div>
-                                        <ul class="list-box-detail">
-                                            <li>
-                                                <label>Salary</label>
-                                                <span>900+ yen/ Hour</span>
-                                            </li>
-                                            <li>
-                                                <label>Location</label>
-                                                <span>
-                                                    <p>Kyoto, nara </p>
-                                                    <p>(10 minutes from Kyoto, nara station)</p>
-                                                </span>
-
-                                            </li>
-                                            <li>
-                                                <label>Japanse</label>
-                                                <span>JLPT N2</span>
-                                            </li>
-                                            <li>
-                                                <label>Hours</label>
-                                                <span>
-                                                    <p>17:30~22:30<p>
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                            <div class="show-job-detail">
-                                                <a href="{{route('jobDetails')}}">Show Job Details</a>
-                                            </div>
-                                        </div>
-                                        <div class="ribbon">New!</div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="job-list-box">
-                                            <h4>Ramen shop genki</h4>
-                                            <div class="job-list-thumb">
-                                                <img src="images/blog-1.jpg" alt="MottoJob" class="img-responsive">
-                                            </div>
-                                            <ul class="list-box-detail">
-                                                <li>
-                                                    <label>Salary</label>
-                                                    <span>1000+ yen/ Hour</span>
-                                                </li>
-                                                <li>
-                                                    <label>Location</label>
-                                                    <span>
-                                                        <p>Wakayama, tanabe</p>
-                                                        <p>(23 minutes from Wakayama station)</p>
-                                                    </span>
-
-                                                </li>
-                                                <li>
-                                                    <label>Japanse</label>
-                                                    <span>JLPT N3 or higher</span>
-                                                </li>
-                                                <li>
-                                                    <label>Hours</label>
-                                                    <span>
-                                                        <p>9:00~17:00、10:00~19:00 17:30~22:30<p>
-                                                            <p>20:00~22:00, 24:00~27:00<p>
-                                                            </span>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="show-job-detail">
-                                                        <a href="{{route('jobDetails')}}">Show Job Details</a>
-                                                    </div>
-                                                </div>
-                                                <div class="ribbon">New!</div>
-                                            </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="job-list-box">
-                                                    <h4>Work in the macha cafe at the heart of gion and super cute and very high paid job is this one so…</h4>
-                                                    <div class="job-list-thumb">
-                                                        <img src="images/blog-1.jpg" alt="MottoJob" class="img-responsive">
-                                                    </div>
-                                                    <ul class="list-box-detail">
-                                                        <li>
-                                                            <label>Salary</label>
-                                                            <span>900+ yen/ Hour</span>
-                                                        </li>
-                                                        <li>
-                                                            <label>Location</label>
-                                                            <span>
-                                                                <p>Kyoto, nara </p>
-                                                                <p>(10 minutes from Kyoto, nara station)</p>
-                                                            </span>
-
-                                                        </li>
-                                                        <li>
-                                                            <label>Japanse</label>
-                                                            <span>JLPT N2</span>
-                                                        </li>
-                                                        <li>
-                                                            <label>Hours</label>
-                                                            <span>
-                                                                <p>17:30~22:30<p>
-                                                                </span>
-                                                            </li>
-                                                        </ul>
-                                                        <div class="show-job-detail">
-                                                            <a href="{{route('jobDetails')}}">Show Job Details</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="ribbon">New!</div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12 col-sm-12">
-                                                    <div class="load-more">
-                                                        <a href="#">Load more…</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3 col-sm-3">
-                                            <div class="work-process-box">
-                                                <div class="work-process-title">
-                                                    <h3>How <img src="images/icon-0.png"> works</h3>
-                                                </div>
-                                                <div class="flow-box">
-                                                    <img src="images/icon-1.png">
-                                                    <h4>(1)Choose the right job</h4>
-                                                    <p>See job offers and apply  to the job that match your goals and wage requirements.</p>
-                                                </div>
-                                                <div class="flow-box">
-                                                    <img src="images/icon-2.png">
-                                                    <h4>(2)Companies contact you</h4>
-                                                    <p>Employers will contact you  by call or email. Responds to it and schedule a interview.</p>
-                                                </div>
-                                                <div class="flow-box">
-                                                    <img src="images/icon-3.png">
-                                                    <h4>(3)Take the interview</h4>
-                                                    <p>Complete the interview and start your next chapter!</p>
-                                                </div>
-                                            </div>
-                                            <div class="resume-box">
-                                                <div class="resume-title">
-                                                    <h3>Japanese Resume</h3>
-                                                </div>
-                                                <div class="resume-box-contant">
-                                                    <img src="images/resume-icon.jpg">
-                                                    <p>Need help writing your resume in Japanese? Contact us through <a href="#">facebook</a> or <a href="#">email</a>, our team will help you to write it (free).</p>
-                                                </div>
-                                            </div>
-                                            <div class="sidebar-banner">
-                                                <a href="#">
-                                                    <img src="images/sidebar-banner.png">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="ribbon">New!</div>
+                        </div>
+                        @endforeach
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="load-more">
+                                <a href="#">Load more…</a>
                             </div>
                         </div>
+                    </div>
+                </div>
+                    
+                            
+                <!-- Right Side -->
+                <div class="col-md-3 col-sm-3">
+                    <div class="work-process-box">
+                        <div class="work-process-title">
+                            <h3>How <img src="images/icon-0.png"> works</h3>
+                        </div>
+                        <div class="flow-box">
+                            <img src="images/icon-1.png">
+                            <h4>(1)Choose the right job</h4>
+                            <p>See job offers and apply  to the job that match your goals and wage requirements.</p>
+                        </div>
+                        <div class="flow-box">
+                            <img src="images/icon-2.png">
+                            <h4>(2)Companies contact you</h4>
+                            <p>Employers will contact you  by call or email. Responds to it and schedule a interview.</p>
+                        </div>
+                        <div class="flow-box">
+                            <img src="images/icon-3.png">
+                            <h4>(3)Take the interview</h4>
+                            <p>Complete the interview and start your next chapter!</p>
+                        </div>
+                    </div>
+                    <div class="resume-box">
+                        <div class="resume-title">
+                            <h3>Japanese Resume</h3>
+                        </div>
+                        <div class="resume-box-contant">
+                            <img src="images/resume-icon.jpg">
+                            <p>Need help writing your resume in Japanese? Contact us through <a href="#">facebook</a> or <a href="#">email</a>, our team will help you to write it (free).</p>
+                        </div>
+                    </div>
+                    <div class="sidebar-banner">
+                        <a href="#">
+                            <img src="images/sidebar-banner.png">
+                        </a>
                     </div>
                 </div>
             </div>

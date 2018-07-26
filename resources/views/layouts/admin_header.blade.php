@@ -37,7 +37,6 @@
                                             <option {{ Session::get('lang_locale') == "ja" ? 'selected':''}} value="ja">にほんご</option>
                                           </select>
                                           {{ csrf_field() }}
-                                          <input type="hidden" name="route" value="jobs">
                                     </div>
                                 </div>
                                 

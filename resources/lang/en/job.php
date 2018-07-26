@@ -39,4 +39,7 @@ return [
     'salary_duration'               => 'Salary Duration',
     'timing'                        => 'Timing',
     'company_email'                 => 'Company Email',
+    'user_name'                     => 'Name',
+    'user_email'                    => 'Email',
+    'created_at'                    => 'Created Date',
 ];

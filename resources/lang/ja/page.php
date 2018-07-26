@@ -18,6 +18,7 @@ return [
     'pages'             => 'ページ',
     'settings'          => '設定',
     'page'              => 'ページ',
+    'applied_jobs'      => '適用業務',
     'add_new'           => '新しく追加する',
     'title'             => 'タイトル',
     'slug'              => 'スラグ',

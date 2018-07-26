@@ -57,14 +57,12 @@ class JobController extends Controller
             'en_description' => 'required',
             'en_requirements' => 'required',
             'en_no_of_vacancy' => 'required',
-            'en_company_email' => 'email',
             'ja_title' => 'required',
             'ja_corporate_name' => 'required',
             'ja_location' => 'required',
             'ja_description' => 'required',
             'ja_requirements' => 'required',
             'ja_no_of_vacancy' => 'required',
-            'ja_company_email' => 'email',
         ]);
         
         $id = DB::table('job')->insertGetId([]);
@@ -116,14 +114,12 @@ class JobController extends Controller
             'en_description' => 'required',
             'en_requirements' => 'required',
             'en_no_of_vacancy' => 'required',
-            'en_company_email' => 'email',
             'ja_title' => 'required',
             'ja_corporate_name' => 'required',
             'ja_location' => 'required',
             'ja_description' => 'required',
             'ja_requirements' => 'required',
             'ja_no_of_vacancy' => 'required',
-            'ja_company_email' => 'email',
         ]);
 
         if($request->en_id && $request->ja_id){
@@ -141,13 +137,13 @@ class JobController extends Controller
                 $job->description = $request->{$key.'_description'};
                 $job->requirements = $request->{$key.'_requirements'};
                 $job->no_of_vacancy = $request->{$key.'_no_of_vacancy'};
-                $job->minimum_working_days_per_week = $request->{$value.'_minimum_working_days_per_week'};
-                $job->minimum_working_hours_per_day = $request->{$value.'_minimum_working_hours_per_day'};
-                $job->community_expenses = $request->{$value.'_community_expenses'};
-                $job->benefits = $request->{$value.'_benefits'};
-                $job->salary = $request->{$value.'_salary'};
-                $job->timing = $request->{$value.'_timing'};
-                $job->company_email = $request->{$value.'_company_email'};
+                $job->minimum_working_days_per_week = $request->{$key.'_minimum_working_days_per_week'};
+                $job->minimum_working_hours_per_day = $request->{$key.'_minimum_working_hours_per_day'};
+                $job->community_expenses = $request->{$key.'_community_expenses'};
+                $job->benefits = $request->{$key.'_benefits'};
+                $job->salary = $request->{$key.'_salary'};
+                $job->timing = $request->{$key.'_timing'};
+                $job->company_email = $request->{$key.'_company_email'};
                 $job->save();
             }
         }
@@ -163,10 +159,21 @@ class JobController extends Controller
      */
     public function destroy($id)
     {
-
         DB::table('job')->where('id', $id)->delete();
         return redirect()->route('jobs')
                         ->with('success','Page deleted successfully');
+    }
+
+    public function applied_job() {
+        $lang_locale = Session::get('lang_locale');
+        $jobs = DB::table('job_applied')
+            ->leftjoin('jobs', 'job_applied.job_id', '=', 'jobs.job_id')
+            ->leftjoin('users', 'job_applied.user_id', '=', 'users.id')
+            ->select('users.name', 'users.email', 'jobs.title', 'jobs.location', 'job_applied.created_at')
+            ->where('jobs.lang',$lang_locale)
+            ->orderBy('job_applied.id','desc')
+            ->get();
+        return view('admin.jobs.applied_jobs',['jobs'=>$jobs]);
     }
 
     public function manage_session(Request $request) {

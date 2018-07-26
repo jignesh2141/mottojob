@@ -18,6 +18,7 @@ return [
     'pages'             => 'Pages',
     'settings'          => 'Settings',
     'page'              => 'Page',
+    'applied_jobs'      => 'Applied Jobs',
     'add_new'           => 'Add New',
     'title'             => 'Title',
     'slug'              => 'Slug',

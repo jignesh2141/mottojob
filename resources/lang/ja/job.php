@@ -39,4 +39,7 @@ return [
     'salary_duration'               => '給与所要時間',
     'timing'                        => 'タイミング',
     'company_email'                 => '会社の電子メール',
+    'user_name'                     => '名',
+    'user_email'                    => 'Eメール',
+    'created_at'                    => '作成日',
 ];

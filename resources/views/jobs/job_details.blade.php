@@ -9,13 +9,13 @@
                     <div class="top-bar bg-white">
                         <div class="col-md-10 col-sm-10 col-sm-push-2 col-md-push-2">
                             <div class="top-bar-detail">
-                                <h3>Work at sushi restaurant</h3>
+                                <h3>{{$job[0]->title}}</h3>
                                 <p>Izakaya Tabiki</p>
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-2 col-sm-pull-10 no-padding col-md-pull-10">
                             <div class="top-bar-thumb">
-                                <img src="images/blog-1.jpg" alt="post-1" class="img-responsive">
+                                <img src="{{ asset('images/blog-1.jpg') }}" alt="post-1" class="img-responsive">
                             </div>
                         </div>
                         
@@ -27,7 +27,7 @@
                 <div class="col-md-4 col-sm-4 col-sm-push-8 col-md-push-8">
                     <div class="detail-right-sidebar">
                         <div class="col-md-12 col-sm-12 no-padding">
-                            <a href="{{route('applyForm')}}" class="apply-job">Apply for this Job</a>
+                            <a href="{{route('applyForm',['job_id'=>$job[0]->job_id])}}" class="apply-job">Apply for this Job</a>
                         </div>
                         <div class="col-md-12 col-sm-12 no-padding">
                             <div class="job-summary-box">
@@ -42,7 +42,7 @@
                                                 <span>Pay</span>
                                             </div>
                                             <div class="col-md-9 col-sm-9 col-xs-9 no-padding summary-contant">
-                                                <p>850+ yen/ hour</p>
+                                                <p>{{$job[0]->salary}}</p>
                                             </div>
                                         </li>
                                         <li>
@@ -51,8 +51,7 @@
                                                 <span>Location</span>
                                             </div>
                                             <div class="col-md-9 col-sm-9 col-xs-9 no-padding summary-contant">
-                                                <p>Tokyo, Shibuya</p>
-                                                <p>2 minutes from shibuya station</p>
+                                                <p>{{$job[0]->location}}</p>
                                             </div>
                                         </li>
                                         <li>
@@ -70,8 +69,7 @@
                                                 <span>Hours</span>
                                             </div>
                                             <div class="col-md-9 col-sm-9 col-xs-9 no-padding summary-contant">
-                                                <p>9:00~17:00、10:00~19:00、</p>
-                                                <p>17:30~22:30</p>
+                                                <p>{{$job[0]->timing}}</p>
                                             </div>
                                         </li>
                                     </ul>
@@ -85,50 +83,33 @@
                         <ul class="detail-list">
                             <li>
                                 <h3>Job description</h3>
-                                <p>Hospitality for our customers through atmosphere, service, and our delicious food!</p>
+                                {!!$job[0]->description!!}
                             </li>
-                            <li>
-                                <h3>In this position, you will:</h3>
-                                <p>
-                                    <ul class="inner-list">
-                                        <li>[Servers] Seating customers, taking and serving orders, etc.</li>
-                                        <li>[Kitchen Staff] Dish washing, Simple dish preparation, etc.</li>
-                                    </ul>
-                                </p>
-                            </li>
+                            
                             <li>
                                 <h3>Requirements</h3>
-                                <p>
-                                    <ul class="inner-list">
-                                        <li class="sub-title">Language Requirements <p>Ability to use basic Japanese (JLPT N4 or higher)</p></li>
-                                        <li class="sub-title">VISA Requirements<P>A valid visa with eligibility to work (Students, etc. with work permission are also welcome)</P></li>
-                                    </ul>
-                                </p>
+                                {!!$job[0]->requirements!!}
                             </li>
                             <li>
                                 <h3>Minimum Working Hours/days</h3>
                                 <p>
                                     <ul class="inner-list">
-                                        <li>Minimum hours  ・・・3 hours / day</li>
-                                        <li>Minimum days    ・・・2 days / week</li>
+                                        <li>{{$job[0]->minimum_working_hours_per_day}}</li>
+                                        <li>{{$job[0]->minimum_working_days_per_week}}</li>
                                     </ul>
                                 </p>
                             </li>
                             <li>
                                 <h3>Commuting Expenses</h3>
-                                <p>Partially paid</p>
+                                {!!$job[0]->community_expenses!!}
                             </li>
                             <li>
                                 <h3>Benefits</h3>
-                                <p>Hospitality for our customers through atmosphere, service, and our delicious food!</p>
-                            </li>
-                            <li>
-                                <h3>300 yen</h3>
-                                <p>Hospitality for our customers through atmosphere, service, and our delicious food!</p>
+                                {!!$job[0]->benefits!!}
                             </li>
                             <li>
                                 <h3>Corporate name</h3>
-                                <p>naiew</p>
+                                <p>{{$job[0]->corporate_name}}</p>
                             </li>
                             <li>
                                 <h3>Location</h3>

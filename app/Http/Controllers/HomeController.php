@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session, App;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -23,6 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $motto_locale = Session::get('motto_locale');
+        return view('welcome');
+    }
+
+    public function manage_locale(Request $request)
+    {
+        if($request->motto_lang != ""){
+            App::setLocale($request->motto_lang);
+            $motto_lang = session(['motto_locale' => $request->motto_lang]);
+            return redirect()->back();
+        }
     }
 }

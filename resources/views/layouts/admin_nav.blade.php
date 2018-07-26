@@ -25,6 +25,9 @@
                     <li class="{{ (Request::route()->getName() == 'pages') ? 'active' : '' }}">
                         <a href="{{route('pages')}}"> <i class="menu-icon ti-email"></i> {{ trans('page.pages') }} </a>
                     </li>
+                    <li class="{{ (Request::route()->getName() == 'appliedJob') ? 'active' : '' }}">
+                        <a href="{{route('appliedJob')}}"> <i class="menu-icon ti-briefcase"></i> {{ trans('page.applied_jobs') }} </a>
+                    </li>
                     <li class="{{ (Request::route()->getName() == 'setting') ? 'active' : '' }}">
                         <a href="{{route('setting')}}"> <i class="menu-icon ti-settings"></i>{{ trans('page.settings') }} </a>
                     </li>

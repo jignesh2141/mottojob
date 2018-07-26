@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
+
     <script type="text/javascript" src="{{ asset('js/jquery-3.2.1.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/respond.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/caroufredsel.js') }}"></script>
@@ -38,28 +39,38 @@
                 <a href="{{ url('/') }}" class="logo"><img src="{{ asset('images/motto-job-logo.png') }}" alt="logo" /></a>
                 <nav >
                     <ul>
-                        
-                        <li><a href="#" id="lang">English<i class="fa fa-caret-down"></i></a>
+                        <li><!-- <a href="#" id="lang">English<i class="fa fa-caret-down"></i></a>
                             
                                 <ul class="dropdown-lan">
                                     <li><a href="#">にほんご</a></li>
                                     <li><a href="#">English</a></li>
-                                </ul>
-                            
+                                </ul> -->
+                                <form action="{{ route('manageLang') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    <select class="selectpicker" name="motto_lang" id="motto_lang">
+                                        <option {{ Session::get('motto_locale') == "en" ? 'selected':''}} value="en">English</option>
+                                        <option {{ Session::get('motto_locale') == "ja" ? 'selected':''}} value="ja">にほんご</option>
+                                    </select>
+                                    {{ csrf_field() }}
+                                </form>
                         </li>
+                        <li class="{{ (Request::route()->getName() == 'mottojobs') ? 'active' : '' }}"><a href="{{ route('mottojobs') }}">Jobs</a></li>
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}" class="signup">Sign Up</a></li>
                         @else 
-                            <li class="{{ (Request::route()->getName() == 'mottojobs') ? 'active' : '' }}"><a href="{{ route('mottojobs') }}">Jobs</a></li>
                             <li class="dropdown">
+                                
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                                 </ul>
+                                <!-- <a href="#" id="lang">{{ Auth::user()->name }}<i class="fa fa-caret-down"></i></a>
+                            
+                                <ul class="dropdown-lan">
+                                    <li><a href="{{ url('/logout') }}">Logout</a></li>
+                                </ul> -->
                             </li>
                         @endif
                     </ul>
@@ -104,5 +115,11 @@
     <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 
+    <script type="text/javascript">
+      var select = document.getElementById('motto_lang');
+      select.addEventListener('change', function(){
+          this.form.submit();
+      }, false);
+    </script>
 </body>
 </html>

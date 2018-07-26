@@ -11,23 +11,31 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+/*Route::get('jobs/{locale}', 'JobController@index' ,function($locale) {
+   	app()->setLocale($locale);
+	echo $locale;exit;
+})->name('mottojobs');*/
 
 Auth::routes();
-
-Route::group(['middleware' => ['auth']], function () {
-  Route::get('/home', 'HomeController@index')->name('home');
-  Route::get('/jobs', 'JobController@index')->name('mottojobs');
-  Route::get('/job', 'JobController@get_job')->name('jobDetails');
-  Route::get('/apply-form', 'JobController@apply_form')->name('applyForm');
+/* Front End */
+Route::group(['middleware' => ['LanguageLocale']], function () {
+	Route::post('/manage-locale', "HomeController@manage_locale")->name('manageLang');
+	Route::get('/', 'HomeController@index');
+    Route::get('/jobs', 'JobController@index')->name('mottojobs');
+	Route::get('/job/{id}', 'JobController@get_job')->name('jobDetails');
+	Route::get('/apply-form/{id}', 'JobController@apply_form')->name('applyForm');
+	Route::post('/apply-job', 'JobController@apply_job')->name('applyJob');
+	Route::get('/apply-completed', 'JobController@apply_completed')->name('applyCompleted');
+	
 });
 
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+
+/* Admin */
 Route::group(['prefix' => 'admin-panel'], function () {
-	
-	//$lang_locale = Session::get('lang_locale');
-    
 	Route::get('/', "Admin\AdminUserController@login");
 	Route::get('/admin-login', "Admin\AdminUserController@login")->name('adminLoginForm');
 	Route::post('/admin-login', "Admin\AdminUserController@validateLogin")->name('adminLoginValidate');
@@ -46,6 +54,7 @@ Route::group(['prefix' => 'admin-panel'], function () {
 		Route::post('/save-job', "Admin\JobController@store")->name('saveJob');
 	    Route::post('/update-job/{id}', "Admin\JobController@update")->name('updateJob');
 	    Route::get('/delete-job/{id}', "Admin\JobController@destroy")->name('deleteJob');
+	    Route::get('/applied-job', "Admin\JobController@applied_job")->name('appliedJob');
 
 	    /* Manage Session */
 	    Route::post('/manage-session', "Admin\JobController@manage_session")->name('manageSession');
