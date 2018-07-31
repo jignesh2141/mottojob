@@ -50,6 +50,8 @@ class JobController extends Controller
         request()->validate([
             'en_title' => 'required',
             'en_corporate_name' => 'required',
+            'en_restaurant' => 'required',
+            'en_designation' => 'required',
             'en_job_type' => 'required',
             'en_prefecture' => 'required',
             'en_japanese_lavel' => 'required',
@@ -59,6 +61,8 @@ class JobController extends Controller
             'en_no_of_vacancy' => 'required',
             'ja_title' => 'required',
             'ja_corporate_name' => 'required',
+            'ja_restaurant' => 'required',
+            'ja_designation' => 'required',
             'ja_location' => 'required',
             'ja_description' => 'required',
             'ja_requirements' => 'required',
@@ -74,6 +78,8 @@ class JobController extends Controller
             $job->lang = $value;
             $job->title = $request->{$value.'_title'};
             $job->corporate_name = $request->{$value.'_corporate_name'};
+            $job->restaurant = $request->{$value.'_restaurant'};
+            $job->designation = $request->{$value.'_designation'};
             $job->job_type = $request->en_job_type;
             $job->prefecture = $request->en_prefecture;
             $job->japanese_lavel = $request->en_japanese_lavel;
@@ -107,6 +113,8 @@ class JobController extends Controller
         request()->validate([
             'en_title' => 'required',
             'en_corporate_name' => 'required',
+            'en_restaurant' => 'required',
+            'en_designation' => 'required',
             'en_job_type' => 'required',
             'en_prefecture' => 'required',
             'en_japanese_lavel' => 'required',
@@ -116,6 +124,8 @@ class JobController extends Controller
             'en_no_of_vacancy' => 'required',
             'ja_title' => 'required',
             'ja_corporate_name' => 'required',
+            'ja_restaurant' => 'required',
+            'ja_designation' => 'required',
             'ja_location' => 'required',
             'ja_description' => 'required',
             'ja_requirements' => 'required',
@@ -130,6 +140,8 @@ class JobController extends Controller
                 $job->lang = $key;
                 $job->title = $request->{$key.'_title'};
                 $job->corporate_name = $request->{$key.'_corporate_name'};
+                $job->restaurant = $request->{$key.'_restaurant'};
+                $job->designation = $request->{$key.'_designation'};
                 $job->job_type = $request->en_job_type;
                 $job->prefecture = $request->en_prefecture;
                 $job->japanese_lavel = $request->en_japanese_lavel;

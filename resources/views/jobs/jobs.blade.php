@@ -129,7 +129,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row infinite-scroll" id="load-data">
                         @foreach($jobs as $job)
                         <div class="col-md-6 col-sm-6">
                             <div class="job-list-box">
@@ -168,10 +168,12 @@
                         </div>
                         @endforeach
                     </div>
-                    <div class="row">
+                    {{ $jobs->links() }}
+                    <div class="row" id="remove-row">
                         <div class="col-md-12 col-sm-12">
                             <div class="load-more">
-                                <a href="#">Load more…</a>
+                                <button id="btn-more" data-id="{{ $job->id }}" class="nounderline btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" > Load More </button>
+
                             </div>
                         </div>
                     </div>
@@ -219,5 +221,47 @@
         </div>
     </div>
     <!--Job List Section Over-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
+    <script type="text/javascript">
+        $('ul.pagination').hide();
+        $(function() {
+            $('.infinite-scroll').jscroll({
+                autoTrigger: true,
+                padding: 0,
+                nextSelector: '.pagination li.active + li a',
+                contentSelector: 'div.infinite-scroll',
+                callback: function() {
+                    $('ul.pagination').remove();
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+           $(document).on('click','#btn-more',function(){
+               var id = $(this).data('id');
+               //$("#btn-more").html("Loading....");
+               $.ajax({
+                   url : '{{ url("jobs/loaddata") }}',
+                   method : "POST",
+                   data : {id:id, _token:"{{csrf_token()}}"},
+                   dataType : "text",
+                   success : function (data)
+                   {
+                      if(data != '') 
+                      {
+                          $('#remove-row').remove();
+                          $('#load-data').append(data);
+                      }
+                      else
+                      {
+                          $('#btn-more').html("No Data");
+                      }
+                   }
+               });
+           });  
+        }); 
+        </script>
 
 @endsection

@@ -10,7 +10,7 @@
                         <div class="col-md-10 col-sm-10 col-sm-push-2 col-md-push-2">
                             <div class="top-bar-detail">
                                 <h3>{{$job[0]->title}}</h3>
-                                <p>Izakaya Tabiki</p>
+                                <p>{{$job[0]->restaurant}}</p>
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-2 col-sm-pull-10 no-padding col-md-pull-10">
@@ -60,7 +60,7 @@
                                                 <span>Job</span>
                                             </div>
                                             <div class="col-md-9 col-sm-9 col-xs-9 no-padding summary-contant">
-                                                <p>Waiter / Waitress staff</p>
+                                                <p>{{$job[0]->designation}}</p>
                                             </div>
                                         </li>
                                         <li>

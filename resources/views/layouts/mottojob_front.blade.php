@@ -53,10 +53,10 @@
                                     {{ csrf_field() }}
                                 </form>
                         </li>
-                        <li class="{{ (Request::route()->getName() == 'mottojobs') ? 'active' : '' }}"><a href="{{ route('mottojobs') }}">Jobs</a></li>
+                        <li class="{{ (Request::route()->getName() == 'mottojobs') ? 'active' : '' }}"><a href="{{ route('mottojobs') }}">{{ trans('general.jobs') }}</a></li>
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}" class="signup">Sign Up</a></li>
+                            <li><a href="{{ url('/login') }}">{{ trans('general.login') }}</a></li>
+                            <li><a href="{{ url('/register') }}" class="signup">{{ trans('general.sign_up') }}</a></li>
                         @else 
                             <li class="dropdown">
                                 
@@ -64,7 +64,7 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                    <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>{{ trans('general.logout') }}</a></li>
                                 </ul>
                                 <!-- <a href="#" id="lang">{{ Auth::user()->name }}<i class="fa fa-caret-down"></i></a>
                             
@@ -92,9 +92,9 @@
             </ul>
             <ul class="footer-menu col-md-push-2">
                 <li class="col-md-push-6  r-width"><a href="#">掲載をお考えの方はこちら</a></li>
-                <li class="col-md-pull-6"><a href="#">Privacy</a></li>
-                <li class="col-md-pull-6"><a href="#">Terms</a></li>
-                <li class="col-md-pull-6"><a href="#">Contact</a></li>
+                <li class="col-md-pull-6"><a href="#">{{ trans('general.privacy') }}</a></li>
+                <li class="col-md-pull-6"><a href="#">{{ trans('general.terms') }}</a></li>
+                <li class="col-md-pull-6"><a href="#">{{ trans('general.contact') }}</a></li>
                 
             </ul>
             

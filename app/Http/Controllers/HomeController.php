@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session, App;
+use App\Job;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,8 @@ class HomeController extends Controller
     public function index()
     {
         $motto_locale = Session::get('motto_locale');
-        return view('welcome');
+        $jobs = Job::where('lang',$motto_locale)->orderBy('id','desc')->limit(6)->get();
+        return view('welcome',['jobs'=>$jobs]);
     }
 
     public function manage_locale(Request $request)

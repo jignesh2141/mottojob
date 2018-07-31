@@ -27,6 +27,8 @@ return [
     'submit'                        => 'Submit',
     'cancel'                        => 'Cancel',
     'corporate_name'                => 'Corporate Name',
+    'restaurant'                    => 'Restaurant',
+    'designation'                   => 'Designation',
     'type'                          => 'Type',
     'description'                   => 'Description',
     'requirements'                  => 'Requirements',

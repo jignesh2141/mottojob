@@ -45,6 +45,16 @@
                             <div class="col-12 col-md-5"><input type="text" id="text-input" name="ja_corporate_name" placeholder="{{ trans('job.corporate_name') }}" class="form-control"></div>
                           </div>
                           <div class="row form-group">
+                            <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('job.restaurant') }}</label></div>
+                            <div class="col-12 col-md-5"><input type="text" id="text-input" name="en_restaurant" placeholder="{{ trans('job.restaurant') }}" class="form-control"></div>
+                            <div class="col-12 col-md-5"><input type="text" id="text-input" name="ja_restaurant" placeholder="{{ trans('job.restaurant') }}" class="form-control"></div>
+                          </div>
+                          <div class="row form-group">
+                            <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('job.designation') }}</label></div>
+                            <div class="col-12 col-md-5"><input type="text" id="text-input" name="en_designation" placeholder="{{ trans('job.designation') }}" class="form-control"></div>
+                            <div class="col-12 col-md-5"><input type="text" id="text-input" name="ja_designation" placeholder="{{ trans('job.designation') }}" class="form-control"></div>
+                          </div>
+                          <div class="row form-group">
                             <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('job.type') }}</label></div>
                             <div class="col-12 col-md-8">
                               <select name="en_job_type" id="en_job_type" class="form-control">

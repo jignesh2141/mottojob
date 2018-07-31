@@ -27,6 +27,8 @@ return [
     'submit'                        => '提出する',
     'cancel'                        => 'キャンセル',         
     'corporate_name'                => '会社名',
+    'restaurant'                    => 'レストラン',
+    'designation'                   => '指定',
     'type'                          => 'タイプ',
     'description'                   => '説明',
     'requirements'                  => '要件',

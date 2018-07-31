@@ -23,6 +23,7 @@ Route::group(['middleware' => ['LanguageLocale']], function () {
 	Route::post('/manage-locale', "HomeController@manage_locale")->name('manageLang');
 	Route::get('/', 'HomeController@index');
     Route::get('/jobs', 'JobController@index')->name('mottojobs');
+    Route::post('jobs/loaddata','JobController@loadDataAjax')->name('loadDataAjax');
 	Route::get('/job/{id}', 'JobController@get_job')->name('jobDetails');
 	Route::get('/apply-form/{id}', 'JobController@apply_form')->name('applyForm');
 	Route::post('/apply-job', 'JobController@apply_job')->name('applyJob');

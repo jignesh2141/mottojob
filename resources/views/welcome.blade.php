@@ -6,9 +6,9 @@
         <div class="container">
             <ul class="slider-carousel" id="slider-carousel">
                 <li class="img1">
-                    <h1>Find your jobs in JAPAN</h1>
-                    <p>Part time, full time, no japanese jobs.</p>
-                    <a href="{{ route('mottojobs') }}" class="secondary-orange-bg cta1">Browse All Jobs</a>
+                    <h1>{{ trans('general.find_job') }}</h1>
+                    <p>{{ trans('general.part_full_job') }}</p>
+                    <a href="{{ route('mottojobs') }}" class="secondary-orange-bg cta1">{{ trans('general.browse_jobs') }}</a>
                     <!-- <a href="#" class="secondary-sky-blue-bg cta2">Contact Us</a> -->
                 </li>
                 <!-- <li class="img1">
@@ -36,7 +36,7 @@
     <section class="services section-padding bg-white">
 
         <div class="services-header">
-            <p>We created MottoWork to make it easy for you to find the right Japanese company to work for.</p>
+            <p>{{ trans('general.we_create') }}</p>
         </div>
         <div class="services-content">
             <div class="container">
@@ -47,22 +47,22 @@
                                 <div class="service-thumbnail">
                                     <img src="{{ asset('images/services-img-1.jpg') }}">
                                 </div>
-                                <h3>We review each company</h3>
-                                <p>We review each companies and only list the ones that meets our requireents.</p>
+                                <h3>{{ trans('general.review_company') }}</h3>
+                                <p>{{ trans('general.review_company_desc') }}</p>
                             </div>
                             <div class="col-md-4 explore">
                                 <div class="service-thumbnail">
                                     <img src="{{ asset('images/services-img-2.jpg') }}">
                                 </div>
-                                <h3>Be you at work</h3>
-                                <p>Tell what you want the company to know first. Cultural, religious and your info.</p>
+                                <h3>{{ trans('general.be_at_work') }}</h3>
+                                <p>{{ trans('general.be_at_work_desc') }}</p>
                             </div>
                             <div class="col-md-4 explore">
                                 <div class="service-thumbnail">
                                     <img src="{{ asset('images/services-img-3.jpg') }}">
                                 </div>
-                                <h3>Our team is always with you!</h3>
-                                <p>Our team is here to help anytime, from providing info to after you’re hired.</p>
+                                <h3>{{ trans('general.our_team') }}</h3>
+                                <p>{{ trans('general.our_team_desc') }}</p>
                             </div>
                         </div>
                     </div>
@@ -75,26 +75,27 @@
     <!--Blog Section Start-->
     <section class="blog section-padding bg-gray">
         <div class="blog-header">
-            <h3>Explore Jobs</h3>
+            <h3>{{ trans('general.explore_jobs') }}</h3>
         </div>
         <div class="container blog-width">
             <div class="row">
+                @foreach($jobs as $job)
                 <div class="col-md-4 col-sm-4 p-l-0 p-media">
-                    <a href="#">
+                    <a href="{{route('jobDetails',['job_id'=>$job->job_id])}}">
                         <div class="job-box">
                             <div class="job-box-thumb">
                                 <img src="{{ asset('images/blog-1.jpg') }}" alt="post-1" class="img-responsive">
                             </div>
                             <div class="job-detail">
-                                <h4 class="job-name">Traditional sweets shop</h4>
+                                <h4 class="job-name">{{$job->title}}</h4>
                                 <ul class="job-description">
                                     <li>
-                                        <label>Salary</label>
-                                        <span>900+ yen/ Hour</span>
+                                        <label>{{ trans('general.salary') }}</label>
+                                        <span>{{$job->salary}}</span>
                                     </li>
                                     <li>
-                                        <label>Location</label>
-                                        <span>Tokyo, Shibuya</span>
+                                        <label>{{ trans('general.location') }}</label>
+                                        <span>{{$job->location}}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -102,128 +103,12 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-4 col-sm-4 p-l-0 p-media">
-                    <a href="#">
-                        <div class="job-box">
-                            <div class="job-box-thumb">
-                                <img src="{{ asset('images/blog-2.jpg') }}" alt="post-1" class="img-responsive">
-                            </div>
-                            <div class="job-detail">
-                                <h4 class="job-name">Multilingual assistance</h4>
-                                <ul class="job-description">
-                                    <li>
-                                        <label>Salary</label>
-                                        <span>930+ yen/ Hour</span>
-                                    </li>
-                                    <li>
-                                        <label>Location</label>
-                                        <span>Tokyo, Harajuku</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-4 p-l-0 p-media">
-                    <a href="#">
-                        <div class="job-box">
-                            <div class="job-box-thumb">
-                                <img src="{{ asset('images/blog-3.jpg') }}" alt="post-1" class="img-responsive">
-                            </div>
-                            <div class="job-detail">
-                                <h4 class="job-name">Multilingual assistance</h4>
-                                <ul class="job-description">
-                                    <li>
-                                        <label>Salary</label>
-                                        <span>800+ yen/ Hour</span>
-                                    </li>
-                                    <li>
-                                        <label>Location</label>
-                                        <span>Tokyo, kwen</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-4 p-l-0 p-media">
-                    <a href="#">
-                        <div class="job-box">
-                            <div class="job-box-thumb">
-                                <img src="{{ asset('images/blog-1.jpg') }}" alt="post-1" class="img-responsive">
-                            </div>
-                            <div class="job-detail">
-                                <h4 class="job-name">Work at sushi restaurant</h4>
-                                <ul class="job-description">
-                                    <li>
-                                        <label>Salary</label>
-                                        <span>930+ yen/ Hour</span>
-                                    </li>
-                                    <li>
-                                        <label>Location</label>
-                                        <span>Kyoto, Tebna</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                        </div>
-                    </a>
-                </div> 
-                <div class="col-md-4 col-sm-4 p-l-0 p-media">
-                    <a href="#">
-                        <div class="job-box">
-                            <div class="job-box-thumb">
-                                <img src="{{ asset('images/blog-2.jpg') }}" alt="post-1" class="img-responsive">
-                            </div>
-                            <div class="job-detail">
-                                <h4 class="job-name">Work at designer’s cafe</h4>
-                                <ul class="job-description">
-                                    <li>
-                                        <label>Salary</label>
-                                        <span>780+ yen/ Hour</span>
-                                    </li>
-                                    <li>
-                                        <label>Location</label>
-                                        <span>Hyogo, hyogo</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-4 p-l-0 p-media">
-                    <a href="#">
-                        <div class="job-box">
-                            <div class="job-box-thumb">
-                                <img src="{{ asset('images/blog-3.jpg') }}" alt="post-1" class="img-responsive">
-                            </div>
-                            <div class="job-detail">
-                                <h4 class="job-name">Make Super cute crape with us</h4>
-                                <ul class="job-description">
-                                    <li>
-                                        <label>Salary</label>
-                                        <span>820+ yen/ Hour</span>
-                                    </li>
-                                    <li>
-                                        <label>Location</label>
-                                        <span>Osaka, Shibuya</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                        </div>
-                    </a>
-                </div>
+                @endforeach
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="browse">
-                        <a href="{{ route('mottojobs') }}">Browse All Jobs</a>
+                        <a href="{{ route('mottojobs') }}">{{ trans('general.browse_jobs') }}</a>
                     </div>
                 </div>
             </div>
@@ -234,7 +119,7 @@
     <!--Populer Keywords Section Start-->
     <section class="popular-keyword section-padding bg-white">
         <div class="popular-keyword-header">
-            <h3>Popular Keywords</h3>
+            <h3>{{ trans('general.popular_keywords') }}</h3>
         </div>
         <div class="container populer-section-width">
             <div class="row">
@@ -242,7 +127,7 @@
                     <a href="#">
                         <div class="keyword-left">
                             <img src="{{ asset('images/Kyoto.jpg') }}" class="img-responsive" alt="motto">
-                            <p>Work in Kyoto</p>
+                            <p>{{ trans('general.work_in_kyoto') }}</p>
                         </div>
                     </a>
                 </div>
@@ -251,7 +136,7 @@
                         <a href="#">
                             <div class="keyword-right-up">
                                 <img src="{{ asset('images/hostel.jpg') }}" class="img-responsive" alt="motto">
-                                <p>Work at Hostel & Guesthouse</p>
+                                <p>{{ trans('general.work_at_guesthouse') }}</p>
                             </div>
                         </a>
                     </div>
@@ -259,13 +144,13 @@
                         <a href="#">
                             <div class="keyword-right-up">
                                 <img src="{{ asset('images/guesthouse.jpg') }}" class="img-responsive" alt="motto">
-                                <p>Work at Restaurant</p>
+                                <p>{{ trans('general.work_at_restaurant') }}</p>
                             </div>
                         </a>
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <a href="#" class="see-more">See more keywords <i class="fa fa-angle-right"></i></a>
+                    <a href="#" class="see-more">{{ trans('general.see_more_keywords') }} <i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
         </div>
