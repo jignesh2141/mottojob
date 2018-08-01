@@ -91,22 +91,29 @@ class JobController extends Controller
     public function loadDataAjax(Request $request)
     {
         $output = '';
-        $id = $request->id;
 
         $motto_locale = Session::get('motto_locale');
-        $jobs = Job::where('lang',$motto_locale)->where('id','<',$id)->orderBy('id','desc')->paginate(2);
-        
+        $jobs = Job::where('lang',$motto_locale)->orderBy('id','desc')->paginate(2);
+        if($request->id > 0){
+            $jobs->where('id','<',$request->id);
+        }
+        if($request->title != ""){
+            $jobs->where('title','like',"'%".$request->title."%'");
+        }
+        /*echo $request->title;
+        echo "<pre>"; print_r($jobs);exit;*/
         if(!$jobs->isEmpty())
         {
             foreach($jobs as $job)
             {
                 $url = $job->id;
+                $img_url = "images/blog-1.jpg";
                                                 
                 $output .= '<div class="col-md-6 col-sm-6">
                             <div class="job-list-box">
                                 <h4>'.$job->title.'</h4>
                                 <div class="job-list-thumb">
-                                    <img src="{{ asset("images/blog-1.jpg") }}" alt="MottoJob" class="img-responsive">
+                                    <img src="'.$img_url.'" alt="MottoJob" class="img-responsive">
                                 </div>
                                 <ul class="list-box-detail">
                                     <li>

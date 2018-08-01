@@ -11,123 +11,119 @@
             </div>
             <div class="row">
                 <div class="col-md-9 col-sm-9">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 hidden-xs">
-                            <div class="search-box">
-                                <div class="form-group">
-                                    <div class="icon-addon addon-lg">
-                                        <input type="text" placeholder="Job title or keyword" class="form-control" id="">
-                                        <label for="email" class="fa fa-search" rel="tooltip" title="Search"></label>
+                    <form action="{{ route('loadDataAjax') }}" id="job_search" method="post" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 hidden-xs">
+                                <div class="search-box">
+                                    <div class="form-group">
+                                        <div class="icon-addon addon-lg">
+                                            <input type="text" placeholder="Job title or keyword" class="form-control" id="job_title" name="title">
+                                            <label for="email" class="fa fa-search" rel="tooltip" title="Search"></label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 col-sm-3 col-xs-12 p-r-6 p-media">
-                            <div class="filter-box">
-                                <a href="#" id="jobtype">Job Type<i class="fa fa-caret-down"></i></a>
-                                <ul class="filter-menu" id="filter-menu1">
-                                    <form>
-                                        <li> 
-                                            <div class="form-check">
-                                                <label>
-                                                    <input type="checkbox" name="Restaurant"> <span class="label-text">Restaurant</span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li> 
-                                            <div class="form-check">
-                                                <label>
-                                                    <input type="checkbox" name="Hotel"> <span class="label-text">Hotel & Guesthouse</span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                    </form>
-                                </ul>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-12 p-r-6 p-media">
+                                <div class="filter-box">
+                                    <a href="#" id="jobtype">Job Type<i class="fa fa-caret-down"></i></a>
+                                    <ul class="filter-menu" id="filter-menu1">
+                                        <form>
+                                            <li> 
+                                                <div class="form-check">
+                                                    <label>
+                                                        <input type="radio" name="job_type" value="1"> <span class="label-text">Restaurant</span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li> 
+                                                <div class="form-check">
+                                                    <label>
+                                                        <input type="radio" name="job_type" value="2"> <span class="label-text">Hotel & Guesthouse</span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                        </form>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-12 p-r-6 p-l-6 p-media">
-                            <div class="filter-box">
-                                <a href="#" id="prefecture">Prefecture<i class="fa fa-caret-down"></i></a>
-                                <ul class="filter-menu" id="filter-menu2">
-                                    <form>
-                                        <li> 
-                                            <div class="form-check">
-                                                <label>
-                                                    <input type="checkbox" name="Kyoto"> <span class="label-text">Kyoto</span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li> 
-                                            <div class="form-check">
-                                                <label>
-                                                    <input type="checkbox" name="Osaka"> <span class="label-text">Osaka</span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                    </form>
-                                </ul>
+                            <div class="col-md-3 col-sm-3 col-xs-12 p-r-6 p-l-6 p-media">
+                                <div class="filter-box">
+                                    <a href="#" id="prefecture">Prefecture<i class="fa fa-caret-down"></i></a>
+                                    <ul class="filter-menu" id="filter-menu2">
+                                        
+                                            <li> 
+                                                <div class="form-check">
+                                                    <label>
+                                                        <input type="radio" name="prefecture" value="Kyoto"> <span class="label-text">Kyoto</span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li> 
+                                                <div class="form-check">
+                                                    <label>
+                                                        <input type="radio" name="prefecture" value="Osaka"> <span class="label-text">Osaka</span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                        
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-12 p-l-6 p-media">
-                            <div class="filter-box">
-                                <a href="#" id="level">Japanese Level<i class="fa fa-caret-down"></i></a>
-                                <ul class="filter-menu" id="filter-menu3">
-                                    <form>
-                                        <li> 
-                                            <div class="form-check">
-                                                <label>
-                                                    <input type="checkbox" name="N1"> <span class="label-text">JLPT N1</span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li> 
-                                            <div class="form-check">
-                                                <label>
-                                                    <input type="checkbox" name="N2"> <span class="label-text">JLPT N2</span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li> 
-                                            <div class="form-check">
-                                                <label>
-                                                    <input type="checkbox" name="N3"> <span class="label-text">JLPT N3</span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li> 
-                                            <div class="form-check">
-                                                <label>
-                                                    <input type="checkbox" name="N4"> <span class="label-text">JLPT N4</span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li> 
-                                            <div class="form-check">
-                                                <label>
-                                                    <input type="checkbox" name="N4"> <span class="label-text">JLPT N4</span>
-                                                </label>
-                                            </div>
-                                        </li>
-                                    </form>
-                                </ul>
+                            <div class="col-md-3 col-sm-3 col-xs-12 p-l-6 p-media">
+                                <div class="filter-box">
+                                    <a href="#" id="level">Japanese Level<i class="fa fa-caret-down"></i></a>
+                                    <ul class="filter-menu" id="filter-menu3">
+                                        <form>
+                                            <li> 
+                                                <div class="form-check">
+                                                    <label>
+                                                        <input type="radio" name="japanese_lavel" value="JLPT N1"> <span class="label-text">JLPT N1</span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li> 
+                                                <div class="form-check">
+                                                    <label>
+                                                        <input type="radio" name="japanese_lavel" value="JLPT N2"> <span class="label-text">JLPT N2</span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li> 
+                                                <div class="form-check">
+                                                    <label>
+                                                        <input type="radio" name="japanese_lavel" value="JLPT N3"> <span class="label-text">JLPT N3</span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li> 
+                                                <div class="form-check">
+                                                    <label>
+                                                        <input type="radio" name="japanese_lavel" value="JLPT N4"> <span class="label-text">JLPT N4</span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                        </form>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12 col-sm-12 hidden-md hidden-lg hidden-sm">
-                            <div class="search-box">
-                                <div class="form-group">
-                                    <div class="icon-addon addon-lg">
-                                        <input type="text" placeholder="Job title or keyword" class="form-control" id="">
-                                        <label for="email" class="fa fa-search" rel="tooltip" title="Search"></label>
+                            <div class="col-md-12 col-sm-12 hidden-md hidden-lg hidden-sm">
+                                <div class="search-box">
+                                    <div class="form-group">
+                                        <div class="icon-addon addon-lg">
+                                            <input type="text" placeholder="Job title or keyword" class="form-control" id="">
+                                            <label for="email" class="fa fa-search" rel="tooltip" title="Search"></label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-12 col-sm-12 hidden-md hidden-lg hidden-sm">
+                                <a href="#" class="search-job sky-blue-bg">Search</a>
+                            </div>
                         </div>
-                        <div class="col-md-12 col-sm-12 hidden-md hidden-lg hidden-sm">
-                            <a href="#" class="search-job sky-blue-bg">Search</a>
-                        </div>
-                    </div>
+                    </form>
 
                     <div class="row infinite-scroll" id="load-data">
                         @foreach($jobs as $job)
@@ -221,23 +217,36 @@
         </div>
     </div>
     <!--Job List Section Over-->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
     <script type="text/javascript">
         $('ul.pagination').hide();
-        $(function() {
-            $('.infinite-scroll').jscroll({
-                autoTrigger: true,
-                padding: 0,
-                nextSelector: '.pagination li.active + li a',
-                contentSelector: 'div.infinite-scroll',
-                callback: function() {
-                    $('ul.pagination').remove();
-                }
-            });
+    </script>
+    <script type="text/javascript">
+        $("#job_title").keyup(function (e) {
+            if (e.keyCode == 13) {
+                var formdata = $("#job_search").serialize();
+                $.ajax({
+                   url : '{{ url("jobs/loaddata") }}',
+                   method : "POST",
+                   data : formdata,
+                   dataType : "text",
+                   success : function (data)
+                   {
+                      console.log(data);
+                      if(data != '') 
+                      {
+                          $('#remove-row').remove();
+                          $('#load-data').append(data);
+                      }
+                      else
+                      {
+                          $('#btn-more').html("No Data");
+                      }
+                   }
+               });
+            }
         });
     </script>
-    <script>
+    <script type="text/javascript">
         $(document).ready(function(){
            $(document).on('click','#btn-more',function(){
                var id = $(this).data('id');
