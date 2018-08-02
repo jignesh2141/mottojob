@@ -111,6 +111,17 @@
                             </div> -->
                           </div>
                           <div class="row form-group">
+                            <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('job.image') }}</label></div>
+                            <div class="col-12 col-md-6">
+                              <input type="file" id="file-input" name="image" class="form-control-file">
+                            </div>
+                            <div class="col-12 col-md-4">
+                              <div class="job-list-thumb">
+                                  <img src="{{ asset('images/job/' . $en_job[0]->image) }}" alt="MottoJob" class="img-responsive" height="100" width="100">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row form-group">
                             <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('job.location') }}</label></div>
                             <div class="col-12 col-md-5"><input type="text" id="text-input" name="en_location" placeholder="{{ trans('job.location') }}" class="form-control" value="{{ $en_job[0]->location }}"></div>
                             <div class="col-12 col-md-5"><input type="text" id="text-input" name="ja_location" placeholder="{{ trans('job.location') }}" class="form-control" value="{{ $ja_job[0]->location }}"></div>

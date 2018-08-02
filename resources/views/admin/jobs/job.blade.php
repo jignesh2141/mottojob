@@ -110,6 +110,12 @@
                             </div> -->
                           </div>
                           <div class="row form-group">
+                            <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('job.image') }}</label></div>
+                            <div class="col-12 col-md-8">
+                              <input type="file" id="file-input" name="image" class="form-control-file">
+                            </div>
+                          </div>
+                          <div class="row form-group">
                             <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('job.location') }}</label></div>
                             <div class="col-12 col-md-5"><input type="text" id="text-input" name="en_location" placeholder="{{ trans('job.location') }}" class="form-control"></div>
                             <div class="col-12 col-md-5"><input type="text" id="text-input" name="ja_location" placeholder="{{ trans('job.location') }}" class="form-control"></div>

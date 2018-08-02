@@ -84,7 +84,7 @@
                     <a href="{{route('jobDetails',['job_id'=>$job->job_id])}}">
                         <div class="job-box">
                             <div class="job-box-thumb">
-                                <img src="{{ asset('images/blog-1.jpg') }}" alt="post-1" class="img-responsive">
+                                <img src="{{ asset('images/job/' . $job->image) }}" alt="post-1" class="img-responsive">
                             </div>
                             <div class="job-detail">
                                 <h4 class="job-name">{{$job->title}}</h4>

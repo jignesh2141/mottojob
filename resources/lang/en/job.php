@@ -44,4 +44,5 @@ return [
     'user_name'                     => 'Name',
     'user_email'                    => 'Email',
     'created_at'                    => 'Created Date',
+    'image'                         => 'Image',
 ];

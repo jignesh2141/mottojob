@@ -11,6 +11,7 @@ use App;
 use DB;
 use Session;
 use Config;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class JobController extends Controller
 {
@@ -70,6 +71,18 @@ class JobController extends Controller
         ]);
         
         $id = DB::table('job')->insertGetId([]);
+
+        $filename = "";
+        if($request->hasFile('image')) {
+
+            $image       = $request->file('image');
+            $filename    = $image->getClientOriginalName();
+
+            $image_resize = Image::make($image->getRealPath());              
+            $image_resize->resize(350, 300);
+            $image_resize->save(public_path('images/job/' .$filename));
+
+        }
         /* EN JA */ 
         $lang = array("en","ja");
         foreach ($lang as $value) {
@@ -94,6 +107,9 @@ class JobController extends Controller
             $job->salary = $request->{$value.'_salary'};
             $job->timing = $request->{$value.'_timing'};
             $job->company_email = $request->{$value.'_company_email'};
+            if($filename != ""){
+                $job->image =$filename;
+            }
             $job->save();
         }
         
@@ -132,6 +148,18 @@ class JobController extends Controller
             'ja_no_of_vacancy' => 'required',
         ]);
 
+        $filename = "";
+        if($request->hasFile('image')) {
+
+            $image       = $request->file('image');
+            $filename    = $image->getClientOriginalName();
+
+            $image_resize = Image::make($image->getRealPath());              
+            $image_resize->resize(350, 300);
+            $image_resize->save(public_path('images/job/' .$filename));
+
+        }
+
         if($request->en_id && $request->ja_id){
             $lang = array("en"=>$request->en_id,"ja"=>$request->ja_id);
             foreach ($lang as $key => $value) {
@@ -156,6 +184,9 @@ class JobController extends Controller
                 $job->salary = $request->{$key.'_salary'};
                 $job->timing = $request->{$key.'_timing'};
                 $job->company_email = $request->{$key.'_company_email'};
+                if($filename != ""){
+                    $job->image =$filename;
+                }
                 $job->save();
             }
         }

@@ -95,7 +95,7 @@ class JobController extends Controller
         $motto_locale = Session::get('motto_locale');
         $jobs = Job::where('lang',$motto_locale)->orderBy('id','desc')->paginate(2);
         if($request->id > 0){
-            $jobs->where('id','<',$request->id);
+            $jobs->where('job_id','<',$request->id);
         }
         if($request->title != ""){
             $jobs->where('title','like',"'%".$request->title."%'");
@@ -106,8 +106,8 @@ class JobController extends Controller
         {
             foreach($jobs as $job)
             {
-                $url = $job->id;
-                $img_url = "images/blog-1.jpg";
+                $url = 'job/'.$job->job_id;
+                $img_url = "images/job/".$job->image;
                                                 
                 $output .= '<div class="col-md-6 col-sm-6">
                             <div class="job-list-box">
@@ -139,7 +139,7 @@ class JobController extends Controller
                                     </li>
                                 </ul>
                                 <div class="show-job-detail">
-                                    <a href="">Show Job Details</a>
+                                    <a href="'.$url.'">Show Job Details</a>
                                 </div>
                             </div>
                             <div class="ribbon">New!</div>

@@ -15,7 +15,7 @@
                         </div>
                         <div class="col-md-2 col-sm-2 col-sm-pull-10 no-padding col-md-pull-10">
                             <div class="top-bar-thumb">
-                                <img src="{{ asset('images/blog-1.jpg') }}" alt="post-1" class="img-responsive">
+                                <img src="{{ asset('images/job/' . $job[0]->image) }}" alt="post-1" class="img-responsive">
                             </div>
                         </div>
                         

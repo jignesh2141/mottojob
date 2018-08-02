@@ -131,7 +131,7 @@
                             <div class="job-list-box">
                                 <h4>{{$job->title}}</h4>
                                 <div class="job-list-thumb">
-                                    <img src="{{ asset('images/blog-1.jpg') }}" alt="MottoJob" class="img-responsive">
+                                    <img src="{{ asset('images/job/' . $job->image) }}" alt="MottoJob" class="img-responsive">
                                 </div>
                                 <ul class="list-box-detail">
                                     <li>
@@ -168,7 +168,7 @@
                     <div class="row" id="remove-row">
                         <div class="col-md-12 col-sm-12">
                             <div class="load-more">
-                                <button id="btn-more" data-id="{{ $job->id }}" class="nounderline btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" > Load More </button>
+                                <button id="btn-more" data-id="{{ $job->job_id }}" class="nounderline btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" > Load More </button>
 
                             </div>
                         </div>
