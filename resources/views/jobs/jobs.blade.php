@@ -204,7 +204,7 @@
                         </div>
                         <div class="resume-box-contant">
                             <img src="images/resume-icon.jpg">
-                            <p>Need help writing your resume in Japanese? Contact us through <a href="#">facebook</a> or <a href="#">email</a>, our team will help you to write it (free).</p>
+                            <p>Need help writing your resume in Japanese? Contact us through <a href="#">facebook</a> or <a href="mailto:support@mottojob.com">email</a>, our team will help you to write it (free).</p>
                         </div>
                     </div>
                     <div class="sidebar-banner">

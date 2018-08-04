@@ -45,4 +45,7 @@ return [
     'user_email'                    => 'Email',
     'created_at'                    => 'Created Date',
     'image'                         => 'Image',
+    'lat_long'                      => 'Latitude/Longitude',
+    'latitude'                      => 'Latitude',
+    'longitude'                     => 'Longitude',
 ];

@@ -171,7 +171,9 @@ footer{float: left;width: 100%;height: 164px;background: #3c3e41;color: #fff;lin
 .filter-menu input[type="checkbox"]:disabled + .label-text{	color: #aaa;}
 .filter-menu input[type="checkbox"]:disabled + .label-text:before{	content: "\f111";	color: #ccc;}
 
-
+.form-control.is-invalid {
+    border-color: #dc3545 !important;
+}
 .center-block {float: none;margin-left: auto;margin-right: auto;}
 .input-group .icon-addon .form-control {border-radius: 0;border: none;}
 .form-group{margin-bottom: 0;}

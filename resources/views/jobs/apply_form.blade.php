@@ -21,7 +21,12 @@
                         <div class="col-md-12 no-padding">
                             <div class="form-group">
                                 <label class="control-label">First Name<span class="required">*</span></label>
-                                <input type="text" required="required" class="form-control" placeholder="Enter First Name" name="first_name" value="{{ old('first_name') }}" />
+                                <input type="text" class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}" placeholder="Enter First Name" name="first_name" value="{{ old('first_name') }}" />
+                                @if ($errors->has('first_name'))
+                                    <span class="invalid-feedback text-danger" role="alert">
+                                        <strong>{{ $errors->first('first_name') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label class="control-label">First Name in hiragana</label>
@@ -29,7 +34,12 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Last Name<span class="required">*</span></label>
-                                <input type="text" required="required" class="form-control" placeholder="Enter Last Name" name="last_name" value="{{ old('last_name') }}" />
+                                <input type="text" class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}" placeholder="Enter Last Name" name="last_name" value="{{ old('last_name') }}" />
+                                @if ($errors->has('last_name'))
+                                    <span class="invalid-feedback text-danger" role="alert">
+                                        <strong>{{ $errors->first('last_name') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Last Name in hiragana</label>
@@ -37,7 +47,12 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Phone number<span class="required">*</span></label>
-                                <input type="mobile" required="required" class="form-control" placeholder="Phone number" name="phone_number" value="{{ old('phone_number') }}" />
+                                <input type="mobile" class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}" placeholder="Phone number" name="phone_number" value="{{ old('phone_number') }}" />
+                                @if ($errors->has('phone_number'))
+                                    <span class="invalid-feedback text-danger" role="alert">
+                                        <strong>{{ $errors->first('phone_number') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Date of birth<span class="required">*</span></label>
@@ -45,8 +60,9 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Nationality<span class="required">*</span></label>
-                                <select class="form-control" name="nationality">
-                                    <option value="0" selected>Japanes</option>
+                                <select class="form-control {{ $errors->has('nationality') ? 'is-invalid' : '' }}" name="nationality">
+                                    <option value="" selected>Please Select</option>
+                                    <option value="Japanes">Japanes</option>
                                     <option value="Indian">Indian</option>
                                     <option value="Chines">Chines</option>
                                     <option value="Pakishtani">Pakishtani</option>
@@ -60,13 +76,13 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Are you currently living in Japan ? <span class="required">*</span></label>
-                                <label class="checkbox-inline"><input type="radio" name="living_in_japan" value="Yes">Yes</label>
-                                <label class="checkbox-inline"><input type="radio" name="living_in_japan" value="No">No</label>
+                                <label class="checkbox-inline"><input type="radio" name="living_in_japan" value="1">Yes</label>
+                                <label class="checkbox-inline"><input type="radio" name="living_in_japan" value="2">No</label>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Prefecture<span class="required">*</span></label>
-                                <select class="form-control" name="prefecture">
-                                    <option value="0" selected>Prefecture</option>
+                                <select class="form-control {{ $errors->has('prefecture') ? 'is-invalid' : '' }}" name="prefecture">
+                                    <option value="" selected>Please Select</option>
                                     <option value="Prefecture 1">Prefecture 1</option>
                                     <option value="Prefecture 2">Prefecture 2</option>
                                     <option value="Prefecture 3">Prefecture 3</option>
@@ -74,8 +90,8 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Visa<span class="required">*</span></label>
-                                <select class="form-control" name="visa">
-                                    <option value="0" selected>Visa</option>
+                                <select class="form-control {{ $errors->has('visa') ? 'is-invalid' : '' }}" name="visa">
+                                    <option value="" selected>Please Select</option>
                                     <option value="1">Example 1</option>
                                     <option value="2">Example 2</option>
                                     <option value="3">Example 3</option>
@@ -87,19 +103,39 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Username<span class="required">*</span></label>
-                                    <input type="text" required="required" class="form-control" placeholder="Enter Username" name="name" value="{{ old('name') }}" />
+                                    <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" placeholder="Enter Username" name="name" value="{{ old('name') }}" />
+                                    @if ($errors->has('name'))
+                                        <span class="invalid-feedback text-danger" role="alert">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Email<span class="required">*</span></label>
-                                    <input type="email" required="required" class="form-control" placeholder="Enter Email" name="email" value="{{ old('email') }}" />
+                                    <input type="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" placeholder="Enter Email" name="email" value="{{ old('email') }}" />
+                                    @if ($errors->has('email'))
+                                        <span class="invalid-feedback text-danger" role="alert">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Password<span class="required">*</span></label>
-                                    <input type="password" required="required" class="form-control" placeholder="Password" name="password" />
+                                    <input type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" placeholder="Password" name="password" />
+                                    @if ($errors->has('password'))
+                                        <span class="invalid-feedback text-danger" role="alert">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Verify Password<span class="required">*</span></label>
-                                    <input type="password" required="required" class="form-control" placeholder="Verify Password" name="password_confirmation" />
+                                    <input type="password" class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" placeholder="Verify Password" name="password_confirmation" />
+                                    @if ($errors->has('password_confirmation'))
+                                        <span class="invalid-feedback text-danger" role="alert">
+                                            <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             @endif
                             <div class="form-sub-title">
@@ -111,7 +147,7 @@
                             <div class="form-group">
                                 <!-- <label class="control-label">Question<span class="required">*</span></label> -->
                                 <select class="form-control" name="question">
-                                    <option value="0" selected>Question</option>
+                                    <option value="0" selected>Please Select</option>
                                     <option value="1">Question 1</option>
                                     <option value="2">Question 2</option>
                                     <option value="3">Question 3</option>
@@ -120,7 +156,7 @@
                             <div class="form-group">
                                 <label class="control-label"></label>
                                 <select class="form-control" name="requirement">
-                                    <option value="0" selected>Requirements</option>
+                                    <option value="0" selected>Please Select</option>
                                     <option value="1">Requirement 1</option>
                                     <option value="2">Requirement 2</option>
                                     <option value="3">Requirement 3</option>
@@ -128,7 +164,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label"></label>
-                                <textarea placeholder="Othere (write in Japanese)" required="required" name="comment" class=""></textarea>
+                                <textarea placeholder="Othere (write in Japanese)" name="comment" class=""></textarea>
                             </div>
                             <div class="form-group">
                                 <label class="control-label"></label>

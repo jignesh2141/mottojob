@@ -121,6 +121,11 @@
                             <div class="col-12 col-md-5"><input type="text" id="text-input" name="ja_location" placeholder="{{ trans('job.location') }}" class="form-control"></div>
                           </div>
                           <div class="row form-group">
+                            <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('job.lat_long') }}</label></div>
+                            <div class="col-12 col-md-5"><input type="text" id="text-input" name="latitude" placeholder="{{ trans('job.latitude') }}" class="form-control"></div>
+                            <div class="col-12 col-md-5"><input type="text" id="text-input" name="longitute" placeholder="{{ trans('job.longitude') }}" class="form-control"></div>
+                          </div>
+                          <div class="row form-group">
                             <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('job.description') }}</label></div>
                             <div class="col-12 col-md-5"><textarea name="en_description" id="en-description" rows="9" class="form-control"></textarea></div>
                             <div class="col-12 col-md-5"><textarea name="ja_description" id="ja-description" rows="9" class="form-control"></textarea></div>

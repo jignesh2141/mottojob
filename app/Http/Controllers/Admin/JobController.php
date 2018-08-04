@@ -97,6 +97,8 @@ class JobController extends Controller
             $job->prefecture = $request->en_prefecture;
             $job->japanese_lavel = $request->en_japanese_lavel;
             $job->location = $request->{$value.'_location'};
+            $job->latitude = $request->latitude;
+            $job->longitute = $request->longitute;
             $job->description = $request->{$value.'_description'};
             $job->requirements = $request->{$value.'_requirements'};
             $job->no_of_vacancy = $request->{$value.'_no_of_vacancy'};
@@ -174,6 +176,8 @@ class JobController extends Controller
                 $job->prefecture = $request->en_prefecture;
                 $job->japanese_lavel = $request->en_japanese_lavel;
                 $job->location = $request->{$key.'_location'};
+                $job->latitude = $request->latitude;
+                $job->longitute = $request->longitute;
                 $job->description = $request->{$key.'_description'};
                 $job->requirements = $request->{$key.'_requirements'};
                 $job->no_of_vacancy = $request->{$key.'_no_of_vacancy'};

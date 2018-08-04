@@ -7,7 +7,16 @@
             <div class="login-section bg-white">
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
-                        
+                            @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+                            @if (session('warning'))
+                                <div class="alert alert-warning">
+                                    {{ session('warning') }}
+                                </div>
+                            @endif
                             <div class="panel-heading">
                                 <h2 class="login-title">Log In</h2>
                             </div>

@@ -57,4 +57,9 @@ class User extends Authenticatable
           'session_id'    => session()->getId(),
         ]);
     }
+
+    public function verifyUser()
+    {
+        return $this->hasOne('App\VerifyUser');
+    }
 }

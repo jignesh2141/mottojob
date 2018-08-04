@@ -150,7 +150,7 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <a href="#" class="see-more">{{ trans('general.see_more_keywords') }} <i class="fa fa-angle-right"></i></a>
+                    <a href="{{ route('mottojobs') }}" class="see-more">{{ trans('general.see_more_keywords') }} <i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
         </div>

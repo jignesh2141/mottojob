@@ -31,50 +31,68 @@ class JobController extends Controller
     public function apply_form()
     {
         $motto_locale = Session::get('motto_locale');
-        $jobs = Job::where('lang',$motto_locale)->orderBy('id','desc')->paginate(config('common.pagination.item_per_page'));
-        return view('jobs.apply_form',['jobs'=>$jobs]);
+        $old = array();
+        if(Auth::user()){
+            $user_id = Auth::user()->id;
+            $jobs = User::where('id',$user_id)->get();
+            $old = $jobs[0];
+        }
+        return view('jobs.apply_form',['old'=>$old]);
     }
     public function apply_job(Request $request)
     {
-        request()->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'phone_number' => 'required',
-            'date_of_birth' => 'required',
-            'nationality' => 'required',
-            'gender' => 'required',
-            'living_in_japan' => 'required',
-            'prefecture' => 'required',
-            'visa' => 'required',
-        ]);
-
         if(Auth::user()){
             $user_id = Auth::user()->id;
+            request()->validate([
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'phone_number' => 'required',
+                'date_of_birth' => 'required',
+                'nationality' => 'required',
+                'gender' => 'required',
+                'living_in_japan' => 'required',
+                'prefecture' => 'required',
+                'visa' => 'required',
+            ]);
         } else {
             request()->validate([
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'phone_number' => 'required',
+                'date_of_birth' => 'required',
+                'nationality' => 'required',
+                'gender' => 'required',
+                'living_in_japan' => 'required',
+                'prefecture' => 'required',
+                'visa' => 'required',
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:6|confirmed',
+                'password_confirmation' => 'required|string|min:6',
             ]);
 
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'first_name_hiragana' => $request->first_name_hiragana,
-                'last_name_hiragana' => $request->last_name_hiragana,
-                'phone_number' => $request->phone_number,
-                'date_of_birth' => $request->date_of_birth,
-                'nationality' => $request->nationality,
-                'gender' => $request->gender,
-                'living_in_japan' => $request->living_in_japan,
-                'prefecture' => $request->prefecture,
-                'visa' => $request->visa,
             ]);
+
             $user_id = $user->id;
         }
+
+        $user = User::find($user_id);
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->first_name_hiragana = $request->first_name_hiragana;
+        $user->last_name_hiragana = $request->last_name_hiragana;
+        $user->phone_number = $request->phone_number;
+        $user->date_of_birth = $request->date_of_birth;
+        $user->nationality = $request->nationality;
+        $user->gender = $request->gender;
+        $user->living_in_japan = $request->living_in_japan;
+        $user->prefecture = $request->prefecture;
+        $user->visa = $request->visa;
+        $user->save();
 
         DB::table('job_applied')->insert(
             ['job_id' => $request->job_id, 'user_id' => $user_id, 'question' => $request->question, 'requirement' => $request->requirement, 'comment' => $request->comment]

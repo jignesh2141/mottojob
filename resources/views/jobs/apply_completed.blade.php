@@ -62,7 +62,7 @@
             </div>
             <div class="row">
                 <div class="ok-btn">
-                    <a href="#">OK</a>
+                    <a href="{{ route('mottojobs') }}">OK</a>
                 </div>
             </div>
         </div>

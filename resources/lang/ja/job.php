@@ -45,4 +45,7 @@ return [
     'user_email'                    => 'Eメール',
     'created_at'                    => '作成日',
     'image'                         => '画像',
+    'lat_long'                      => '緯度/経度',
+    'latitude'                      => '緯度',
+    'longitude'                     => '経度',
 ];
