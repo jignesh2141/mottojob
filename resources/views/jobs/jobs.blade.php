@@ -34,14 +34,14 @@
                                             <li> 
                                                 <div class="form-check">
                                                     <label>
-                                                        <input type="radio" name="job_type" value="1"> <span class="label-text">Restaurant</span>
+                                                        <input type="checkbox" name="job_type[]" value="1" onclick="search_filter()"> <span class="label-text">Restaurant</span>
                                                     </label>
                                                 </div>
                                             </li>
                                             <li> 
                                                 <div class="form-check">
                                                     <label>
-                                                        <input type="radio" name="job_type" value="2"> <span class="label-text">Hotel & Guesthouse</span>
+                                                        <input type="checkbox" name="job_type[]" value="2" onclick="search_filter()"> <span class="label-text">Hotel & Guesthouse</span>
                                                     </label>
                                                 </div>
                                             </li>
@@ -57,14 +57,14 @@
                                             <li> 
                                                 <div class="form-check">
                                                     <label>
-                                                        <input type="radio" name="prefecture" value="Kyoto"> <span class="label-text">Kyoto</span>
+                                                        <input type="checkbox" name="prefecture[]" value="Kyoto" onclick="search_filter()"> <span class="label-text">Kyoto</span>
                                                     </label>
                                                 </div>
                                             </li>
                                             <li> 
                                                 <div class="form-check">
                                                     <label>
-                                                        <input type="radio" name="prefecture" value="Osaka"> <span class="label-text">Osaka</span>
+                                                        <input type="checkbox" name="prefecture[]" value="Osaka" onclick="search_filter()"> <span class="label-text">Osaka</span>
                                                     </label>
                                                 </div>
                                             </li>
@@ -76,36 +76,43 @@
                                 <div class="filter-box">
                                     <a href="#" id="level">Japanese Level<i class="fa fa-caret-down"></i></a>
                                     <ul class="filter-menu" id="filter-menu3">
-                                        <form>
+                                        
                                             <li> 
                                                 <div class="form-check">
                                                     <label>
-                                                        <input type="radio" name="japanese_lavel" value="JLPT N1"> <span class="label-text">JLPT N1</span>
+                                                        <input type="checkbox" name="japanese_lavel[]" value="JLPT N1"> <span class="label-text">JLPT N1</span>
                                                     </label>
                                                 </div>
                                             </li>
                                             <li> 
                                                 <div class="form-check">
                                                     <label>
-                                                        <input type="radio" name="japanese_lavel" value="JLPT N2"> <span class="label-text">JLPT N2</span>
+                                                        <input type="checkbox" name="japanese_lavel[]" value="JLPT N2"> <span class="label-text">JLPT N2</span>
                                                     </label>
                                                 </div>
                                             </li>
                                             <li> 
                                                 <div class="form-check">
                                                     <label>
-                                                        <input type="radio" name="japanese_lavel" value="JLPT N3"> <span class="label-text">JLPT N3</span>
+                                                        <input type="checkbox" name="japanese_lavel[]" value="JLPT N3"> <span class="label-text">JLPT N3</span>
                                                     </label>
                                                 </div>
                                             </li>
                                             <li> 
                                                 <div class="form-check">
                                                     <label>
-                                                        <input type="radio" name="japanese_lavel" value="JLPT N4"> <span class="label-text">JLPT N4</span>
+                                                        <input type="checkbox" name="japanese_lavel[]" value="JLPT N4"> <span class="label-text">JLPT N4</span>
                                                     </label>
                                                 </div>
                                             </li>
-                                        </form>
+                                            <li> 
+                                                <div class="form-check">
+                                                    <label>
+                                                        <input type="checkbox" name="japanese_lavel[]" value="JLPT N5"> <span class="label-text">JLPT N5</span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -204,7 +211,7 @@
                         </div>
                         <div class="resume-box-contant">
                             <img src="images/resume-icon.jpg">
-                            <p>Need help writing your resume in Japanese? Contact us through <a href="#">facebook</a> or <a href="mailto:support@mottojob.com">email</a>, our team will help you to write it (free).</p>
+                            <p>Need help writing your resume in Japanese? Contact us through <a href="#">facebook</a> or <a href="mailto:bunpoapp@gmail.com">email</a>, our team will help you to write it (free).</p>
                         </div>
                     </div>
                     <div class="sidebar-banner">
@@ -223,28 +230,32 @@
     <script type="text/javascript">
         $("#job_title").keyup(function (e) {
             if (e.keyCode == 13) {
-                var formdata = $("#job_search").serialize();
-                $.ajax({
-                   url : '{{ url("jobs/loaddata") }}',
-                   method : "POST",
-                   data : formdata,
-                   dataType : "text",
-                   success : function (data)
-                   {
-                      console.log(data);
-                      if(data != '') 
-                      {
-                          $('#remove-row').remove();
-                          $('#load-data').append(data);
-                      }
-                      else
-                      {
-                          $('#btn-more').html("No Data");
-                      }
-                   }
-               });
+                search_filter();
             }
         });
+        function search_filter() {
+            var formdata = $("#job_search").serialize();
+            $.ajax({
+               url : '{{ url("jobs/loaddata") }}',
+               method : "POST",
+               data : formdata,
+               dataType : "text",
+               success : function (data)
+               {
+                  console.log(data);
+                  if(data != '') 
+                  {
+                      $('#remove-row').remove();
+                      $('#load-data').html("");
+                      $('#load-data').append(data);
+                  }
+                  else
+                  {
+                      $('#btn-more').html("No Data");
+                  }
+               }
+           });
+        }
     </script>
     <script type="text/javascript">
         $(document).ready(function(){

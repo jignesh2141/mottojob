@@ -98,6 +98,7 @@
                                 <option {{ $en_job[0]->japanese_lavel == "JLPT N2" ? 'selected':''}} value="JLPT N2">JLPT N2</option>
                                 <option {{ $en_job[0]->japanese_lavel == "JLPT N3" ? 'selected':''}} value="JLPT N3">JLPT N3</option>
                                 <option {{ $en_job[0]->japanese_lavel == "JLPT N4" ? 'selected':''}} value="JLPT N4">JLPT N4</option>
+                                <option {{ $en_job[0]->japanese_lavel == "JLPT N5" ? 'selected':''}} value="JLPT N4">JLPT N5</option>
                               </select>
                             </div>
                             <!-- <div class="col-12 col-md-5">

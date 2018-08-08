@@ -111,15 +111,29 @@ class JobController extends Controller
         $output = '';
 
         $motto_locale = Session::get('motto_locale');
-        $jobs = Job::where('lang',$motto_locale)->orderBy('id','desc')->paginate(2);
+        $query = Job::where('lang',$motto_locale)->orderBy('id','desc');
         if($request->id > 0){
-            $jobs->where('job_id','<',$request->id);
+            $query->where('job_id','<',$request->id);
         }
         if($request->title != ""){
-            $jobs->where('title','like',"'%".$request->title."%'");
+            $query->where("title","like","%".$request->title."%");
         }
-        /*echo $request->title;
-        echo "<pre>"; print_r($jobs);exit;*/
+        if($request->job_type != ""){
+            $job_type = implode(",", $request->job_type);
+            $query->->whereIn('job_type', array($job_type));
+        }
+        if($request->prefecture != ""){
+            $prefecture = implode(",", $request->prefecture);
+            $query->->whereIn('prefecture', array($prefecture));
+        }
+        if($request->japanese_lavel != ""){
+            $japanese_lavel = implode(",", $request->japanese_lavel);
+            $query->->whereIn('japanese_lavel', array($japanese_lavel));
+        }
+        
+        $query->limit(2);
+        $jobs = $query->get();
+    
         if(!$jobs->isEmpty())
         {
             foreach($jobs as $job)

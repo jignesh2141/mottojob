@@ -97,6 +97,7 @@
                                 <option value="JLPT N2">JLPT N2</option>
                                 <option value="JLPT N3">JLPT N3</option>
                                 <option value="JLPT N4">JLPT N4</option>
+                                <option value="JLPT N5">JLPT N5</option>
                               </select>
                             </div>
                             <!-- <div class="col-12 col-md-5">
