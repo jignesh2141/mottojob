@@ -120,15 +120,15 @@ class JobController extends Controller
         }
         if($request->job_type != ""){
             $job_type = implode(",", $request->job_type);
-            $query->->whereIn('job_type', array($job_type));
+            $query->whereIn('job_type', array($job_type));
         }
         if($request->prefecture != ""){
             $prefecture = implode(",", $request->prefecture);
-            $query->->whereIn('prefecture', array($prefecture));
+            $query->whereIn('prefecture', array($prefecture));
         }
         if($request->japanese_lavel != ""){
             $japanese_lavel = implode(",", $request->japanese_lavel);
-            $query->->whereIn('japanese_lavel', array($japanese_lavel));
+            $query->whereIn('japanese_lavel', array($japanese_lavel));
         }
         
         $query->limit(2);

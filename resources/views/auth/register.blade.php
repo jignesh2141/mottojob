@@ -14,7 +14,7 @@
                             <div class="panel-body">
                                 <p class="login-msg">Sign Up to Motto Job</p>
                                 
-                                <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+                                <form method="POST" id="registerForm" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                                     @csrf
                                     <fieldset>
                                         <div class="form-group">
@@ -58,5 +58,11 @@
         </div>
     </section>
     <!--Login Form Section Over-->
+    <script>
+    $().ready(function() {
+        // validate the comment form when it is submitted
+        $("#registerForm").validate();
+    });
+    </script>
                 
 @endsection

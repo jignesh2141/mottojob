@@ -114,10 +114,12 @@
                             <li>
                                 <h3>Location</h3>
                                 <p>
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3926789.323477777!2d136.91566477117132!3d36.07808147257953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34674e0fd77f192f%3A0xf54275d47c665244!2sJapan!5e0!3m2!1sen!2sin!4v1530369033317" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                    <div id="map"></div>
                                 </p>
                             </li>
                         </ul>
+                        <input type="hidden" id="latitude" value="{{$job[0]->latitude}}">
+                        <input type="hidden" id="longitute" value="{{$job[0]->longitute}}">
                     </div>
                 </div>
                 <div class="col-md-12 col-sm-12 hidden-md hidden-lg hidden-sm">
@@ -130,5 +132,27 @@
         </div>
     </div>
     <!--Job Detail Section Over-->
+
+    
+    <script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: -25.344, lng: 131.036};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 4, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAENuXYNKUcbXz5wBoEFJtPKvHOE14Hn0&callback=initMap">
+    </script>
 
 @endsection

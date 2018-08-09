@@ -17,6 +17,8 @@
     <script type="text/javascript" src="{{ asset('js/respond.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/caroufredsel.js') }}"></script>
 
+    <script type="text/javascript" src="{{ asset('js/jquery.validate.js') }}"></script>
+
 </head>
 <body>
     <!--body Content Start-->
@@ -92,8 +94,8 @@
             </ul>
             <ul class="footer-menu col-md-push-2">
                 <li class="col-md-push-6  r-width"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfklo8vk9DkoGWSgb6LORD1sqJXpXOJwZyiMVp8Mx9a2XeRQA/viewform" target="blank">掲載をお考えの方はこちら</a></li>
-                <li class="col-md-pull-6"><a href="#">{{ trans('general.privacy') }}</a></li>
-                <li class="col-md-pull-6"><a href="#">{{ trans('general.terms') }}</a></li>
+                <li class="col-md-pull-6"><a href="{{ url('/page/privacy-policy') }}">{{ trans('general.privacy') }}</a></li>
+                <li class="col-md-pull-6"><a href="{{ url('/page/terms-of-service') }}">{{ trans('general.terms') }}</a></li>
                 <li class="col-md-pull-6"><a href="mailto:bunpoapp@gmail.com">{{ trans('general.contact') }}</a></li>
                 
             </ul>

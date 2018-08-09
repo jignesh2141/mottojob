@@ -28,7 +28,7 @@ Route::group(['middleware' => ['LanguageLocale']], function () {
 	Route::get('/apply-form/{id}', 'JobController@apply_form')->name('applyForm');
 	Route::post('/apply-job', 'JobController@apply_job')->name('applyJob');
 	Route::get('/apply-completed', 'JobController@apply_completed')->name('applyCompleted');
-	
+	Route::get('/page/{page_name}', 'PageController@getPages');
 });
 Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 Route::group(['middleware' => ['auth']], function () {
