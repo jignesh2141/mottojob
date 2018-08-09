@@ -114,7 +114,8 @@
                             <li>
                                 <h3>Location</h3>
                                 <p>
-                                    <div id="map"></div>
+                                    <div id="map" style="width: 100%; height: 300px;"></div>  
+
                                 </p>
                             </li>
                         </ul>
@@ -134,25 +135,27 @@
     <!--Job Detail Section Over-->
 
     
-    <script>
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: -25.344, lng: 131.036};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
-    </script>
-    <!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function
-    -->
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAENuXYNKUcbXz5wBoEFJtPKvHOE14Hn0&callback=initMap">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyAAENuXYNKUcbXz5wBoEFJtPKvHOE14Hn0"></script>
+    <script type="text/javascript">
+    function initialize(){
+         var lat = $('#latitude').val();
+         var lng = $('#longitute').val();
+         console.log(lat,lng);
+         var myLatlng = new google.maps.LatLng(lat,lng);
+         var myOptions = {
+             zoom: 12,
+             center: myLatlng,
+             mapTypeId: google.maps.MapTypeId.ROADMAP
+             }
+          map = new google.maps.Map(document.getElementById("map"), myOptions);
+          var marker = new google.maps.Marker({
+              position: myLatlng, 
+              map: map,
+          title:"Fast marker"
+         });
+    } 
+
+    google.maps.event.addDomListener(window,'load', initialize);
     </script>
 
 @endsection
