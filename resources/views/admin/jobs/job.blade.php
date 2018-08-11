@@ -174,7 +174,7 @@
                           <div class="row form-group">
                             <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('job.company_email') }}</label></div>
                             <div class="col-12 col-md-5"><input type="email" id="text-input" name="en_company_email" placeholder="{{ trans('job.company_email') }}" class="form-control"></div>
-                            <div class="col-12 col-md-5"><input type="email" id="text-input" name="ja_company_email" placeholder="{{ trans('job.company_email') }}" class="form-control"></div>
+                            <!-- <div class="col-12 col-md-5"><input type="email" id="text-input" name="ja_company_email" placeholder="{{ trans('job.company_email') }}" class="form-control"></div> -->
                           </div>
                       </div>
                       <div class="card-footer">

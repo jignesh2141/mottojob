@@ -180,7 +180,7 @@
                           <div class="row form-group">
                             <div class="col col-md-2"><label for="text-input" class=" form-control-label">{{ trans('job.company_email') }}</label></div>
                             <div class="col-12 col-md-5"><input type="email" id="text-input" name="en_company_email" placeholder="{{ trans('job.company_email') }}" class="form-control" value="{{ $en_job[0]->company_email }}"></div>
-                            <div class="col-12 col-md-5"><input type="email" id="text-input" name="ja_company_email" placeholder="{{ trans('job.company_email') }}" class="form-control" value="{{ $ja_job[0]->company_email }}"></div>
+                            <!-- <div class="col-12 col-md-5"><input type="email" id="text-input" name="ja_company_email" placeholder="{{ trans('job.company_email') }}" class="form-control" value="{{ $ja_job[0]->company_email }}"></div> -->
                           </div>
 
                           <input type="hidden" name="en_id" value="{{ $en_job[0]->id }}">

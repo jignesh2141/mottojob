@@ -28,8 +28,7 @@
     <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
     <!-- Right Panel -->
 
-
-
+    <script type="text/javascript" src="{{ asset('js/jquery.validate.js') }}"></script>
 </head>
 <body>
 @include('layouts.admin_nav')

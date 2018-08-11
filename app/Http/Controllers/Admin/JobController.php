@@ -57,9 +57,12 @@ class JobController extends Controller
             'en_prefecture' => 'required',
             'en_japanese_lavel' => 'required',
             'en_location' => 'required',
+            'latitude' => 'required',
+            'longitute' => 'required',
             'en_description' => 'required',
             'en_requirements' => 'required',
             'en_no_of_vacancy' => 'required',
+            'en_company_email' => 'required',
             'ja_title' => 'required',
             'ja_corporate_name' => 'required',
             'ja_restaurant' => 'required',
@@ -108,7 +111,7 @@ class JobController extends Controller
             $job->benefits = $request->{$value.'_benefits'};
             $job->salary = $request->{$value.'_salary'};
             $job->timing = $request->{$value.'_timing'};
-            $job->company_email = $request->{$value.'_company_email'};
+            $job->company_email = $request->en_company_email;
             if($filename != ""){
                 $job->image =$filename;
             }
@@ -137,9 +140,12 @@ class JobController extends Controller
             'en_prefecture' => 'required',
             'en_japanese_lavel' => 'required',
             'en_location' => 'required',
+            'latitude' => 'required',
+            'longitute' => 'required',
             'en_description' => 'required',
             'en_requirements' => 'required',
             'en_no_of_vacancy' => 'required',
+            'en_company_email' => 'required',
             'ja_title' => 'required',
             'ja_corporate_name' => 'required',
             'ja_restaurant' => 'required',
@@ -187,7 +193,7 @@ class JobController extends Controller
                 $job->benefits = $request->{$key.'_benefits'};
                 $job->salary = $request->{$key.'_salary'};
                 $job->timing = $request->{$key.'_timing'};
-                $job->company_email = $request->{$key.'_company_email'};
+                $job->company_email = $request->en_company_email;
                 if($filename != ""){
                     $job->image =$filename;
                 }

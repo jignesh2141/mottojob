@@ -99,7 +99,7 @@
                                     </li>
                                 </ul>
                             </div>
-
+                            
                         </div>
                     </a>
                 </div>
@@ -124,7 +124,7 @@
         <div class="container populer-section-width">
             <div class="row">
                 <div class="col-md-5 col-sm-5 no-padding p-media">
-                    <a href="{{ route('mottojobs') }}">
+                    <a href="#">
                         <div class="keyword-left">
                             <img src="{{ asset('images/Kyoto.jpg') }}" class="img-responsive" alt="motto">
                             <p>{{ trans('general.work_in_kyoto') }}</p>
@@ -133,7 +133,7 @@
                 </div>
                 <div class="col-md-7 col-sm-7 p-r-0 p-media">
                     <div class="col-md-12 no-padding">
-                        <a href="{{ route('mottojobs') }}">
+                        <a href="#">
                             <div class="keyword-right-up">
                                 <img src="{{ asset('images/hostel.jpg') }}" class="img-responsive" alt="motto">
                                 <p>{{ trans('general.work_at_guesthouse') }}</p>
@@ -141,7 +141,7 @@
                         </a>
                     </div>
                     <div class="col-md-12 no-padding">
-                        <a href="{{ route('mottojobs') }}">
+                        <a href="#">
                             <div class="keyword-right-up">
                                 <img src="{{ asset('images/guesthouse.jpg') }}" class="img-responsive" alt="motto">
                                 <p>{{ trans('general.work_at_restaurant') }}</p>
