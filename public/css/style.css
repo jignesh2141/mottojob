@@ -24,6 +24,7 @@ header nav > ul > li:nth-child(1):hover .dropdown-lan{/* display: block; */top: 
 .menu-icon.activated span:nth-child(3){transform: scaleX(0);}
 .signup{background: #2893e7;color: #fff;padding: 8px 25px;border-radius: 6px;}
 .signup:hover{background: #ff9f00;color: #fff;}
+.error {color: #dc3545;}
 /*** Header Section CSS Over ***/
 
 /*** Slider Section CSS Start ***/

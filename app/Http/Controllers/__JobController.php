@@ -12,13 +12,27 @@ use App\Job;
 use App\User;
 use DB, Auth;
 use Session;
+use Mail;
+use App\Mail\VerifyMail;
+use App\VerifyUser;
+use DateTime;
 
 class JobController extends Controller
 {
+    var $paginate;
+
     public function index()
     {
         $motto_locale = Session::get('motto_locale');
-        $jobs = Job::where('lang',$motto_locale)->orderBy('id','desc')->paginate(2);
+        $jobs = Job::where('lang',$motto_locale)->orderBy('id','desc')->paginate(env('PAGINATE'));
+        foreach ($jobs as $key => $job) {
+            $fdate = date("Y-m-d");
+            $tdate = date("Y-m-d",strtotime($job->created_at));
+            $datetime1 = new DateTime($fdate);
+            $datetime2 = new DateTime($tdate);
+            $interval = $datetime1->diff($datetime2);
+            $job->day_diff = $interval->format('%a');
+        }
         return view('jobs.jobs',['jobs'=>$jobs]);
     }
 
@@ -78,6 +92,14 @@ class JobController extends Controller
             ]);
 
             $user_id = $user->id;
+                $verifyUser = VerifyUser::create([
+            'user_id' => $user->id,
+            'token' => str_random(40)
+            ]);
+
+            $template = "emails.verifyUser";
+            $subject = "Verify Email";
+            Mail::to($user->email)->send(new VerifyMail($user,$template,$subject));
         }
 
         $user = User::find($user_id);
@@ -86,7 +108,7 @@ class JobController extends Controller
         $user->first_name_hiragana = $request->first_name_hiragana;
         $user->last_name_hiragana = $request->last_name_hiragana;
         $user->phone_number = $request->phone_number;
-        $user->date_of_birth = $request->date_of_birth;
+        $user->date_of_birth = date('Y-m-d H:i:s',strtotime($request->date_of_birth));
         $user->nationality = $request->nationality;
         $user->gender = $request->gender;
         $user->living_in_japan = $request->living_in_japan;
@@ -94,9 +116,28 @@ class JobController extends Controller
         $user->visa = $request->visa;
         $user->save();
 
-        DB::table('job_applied')->insert(
+        $last_inser_id = DB::table('job_applied')->insertGetId(
             ['job_id' => $request->job_id, 'user_id' => $user_id, 'question' => $request->question, 'requirement' => $request->requirement, 'comment' => $request->comment]
         );
+
+        if($request->job_id > 0){
+            $motto_locale = Session::get('motto_locale');
+            $company_email = $job[0]->company_email;
+            if (filter_var($company_email, FILTER_VALIDATE_EMAIL)) {
+                $jobs = DB::table('job_applied')
+                ->leftjoin('jobs', 'job_applied.job_id', '=', 'jobs.job_id')
+                ->leftjoin('users', 'job_applied.user_id', '=', 'users.id')
+                ->select('users.*', 'jobs.title')
+                ->where('jobs.lang','en')
+                ->where('job_applied.id',$last_inser_id)
+                ->get();
+
+                
+                $template = "emails.applyJob";
+                $subject = "Applied for a Job";
+                Mail::to($company_email)->cc(env('ADMIN_EMAIL'))->send(new VerifyMail($user,$template,$subject));
+            }
+        }
 
         return redirect()->route('applyCompleted');
     }
@@ -108,86 +149,42 @@ class JobController extends Controller
 
     public function loadDataAjax(Request $request)
     {
+      // dd($request->all());
         $output = '';
-
         $motto_locale = Session::get('motto_locale');
-        $query = Job::where('lang',$motto_locale)->orderBy('id','desc');
+
+        $jobs = Job::query();
+
         if($request->id > 0){
-            $query->where('job_id','<',$request->id);
+            $jobs->where('job_id','<',$request->id);
         }
         if($request->title != ""){
-            $query->where("title","like","%".$request->title."%");
+            $jobs->where("title","like","%".$request->title."%");
         }
         if($request->job_type != ""){
             $job_type = implode(",", $request->job_type);
-            $query->whereIn('job_type', array($job_type));
+            $jobs->whereIn('job_type', array($job_type));
         }
         if($request->prefecture != ""){
             $prefecture = implode(",", $request->prefecture);
-            $query->whereIn('prefecture', array($prefecture));
+            $jobs->whereIn('prefecture', array($prefecture));
         }
         if($request->japanese_lavel != ""){
             $japanese_lavel = implode(",", $request->japanese_lavel);
-            $query->whereIn('japanese_lavel', array($japanese_lavel));
+            $jobs->whereIn('japanese_lavel', array($japanese_lavel));
         }
-        
-        $query->limit(2);
-        $jobs = $query->get();
-    
-        if(!$jobs->isEmpty())
-        {
-            foreach($jobs as $job)
-            {
-                $url = 'job/'.$job->job_id;
-                $img_url = "images/job/".$job->image;
-                                                
-                $output .= '<div class="col-md-6 col-sm-6">
-                            <div class="job-list-box">
-                                <h4>'.$job->title.'</h4>
-                                <div class="job-list-thumb">
-                                    <img src="'.$img_url.'" alt="MottoJob" class="img-responsive">
-                                </div>
-                                <ul class="list-box-detail">
-                                    <li>
-                                        <label>Salary</label>
-                                        <span>'.$job->salary.'</span>
-                                    </li>
-                                    <li>
-                                        <label>Location</label>
-                                        <span>
-                                            <p>'.$job->location.'</p>
-                                        </span>
 
-                                    </li>
-                                    <li>
-                                        <label>Japanse</label>
-                                        <span>'.$job->japanese_lavel.'</span>
-                                    </li>
-                                    <li>
-                                        <label>Hours</label>
-                                        <span>
-                                            <p>'.$job->timing.'</p>
-                                        </span>
-                                    </li>
-                                </ul>
-                                <div class="show-job-detail">
-                                    <a href="'.$url.'">Show Job Details</a>
-                                </div>
-                            </div>
-                            <div class="ribbon">New!</div>
-                        </div>';
-            }
-            
-            $output .= '<div class="row" id="remove-row">
-                        <div class="col-md-12 col-sm-12">
-                            <div class="load-more">
-                                <button id="btn-more" data-id="'.$job->job_id.'" class="nounderline btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" > Load More </button>
-
-                            </div>
-                        </div>
-                    </div>';
-            
-            echo $output;
+        $jobs->where('lang',$motto_locale);
+        $jobs->orderBy('id','desc');
+        $jobs = $jobs->paginate(env('PAGINATE'));
+        foreach ($jobs as $key => $job) {
+            $fdate = date("Y-m-d");
+            $tdate = date("Y-m-d",strtotime($job->created_at));
+            $datetime1 = new DateTime($fdate);
+            $datetime2 = new DateTime($tdate);
+            $interval = $datetime1->diff($datetime2);
+            $job->day_diff = $interval->format('%a');
         }
+        return $jobs;
     }
 }

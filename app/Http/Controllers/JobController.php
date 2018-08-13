@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Job;
 use App\User;
+use App\VerifyUser;
 use DB, Auth;
 use Session;
 use Mail;
@@ -89,16 +90,17 @@ class JobController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
-
             $user_id = $user->id;
-                $verifyUser = VerifyUser::create([
-            'user_id' => $user->id,
-            'token' => str_random(40)
+            $token = str_random(40);
+            $verifyUser = VerifyUser::create([
+              'user_id' => $user->id,
+              'token' => $token
             ]);
-
+            $userData = User::find($user_id)->toArray();
+            $userData['token'] = $token;
             $template = "emails.verifyUser";
             $subject = "Verify Email";
-            Mail::to($user->email)->send(new VerifyMail($user,$template,$subject));
+            Mail::to($user->email)->send(new VerifyMail($userData,$template,$subject));
         }
 
         $user = User::find($user_id);
@@ -114,27 +116,28 @@ class JobController extends Controller
         $user->prefecture = $request->prefecture;
         $user->visa = $request->visa;
         $user->save();
-
+        $userData = User::find($user_id)->toArray();
         $last_inser_id = DB::table('job_applied')->insertGetId(
             ['job_id' => $request->job_id, 'user_id' => $user_id, 'question' => $request->question, 'requirement' => $request->requirement, 'comment' => $request->comment]
         );
 
         if($request->job_id > 0){
             $motto_locale = Session::get('motto_locale');
-            $company_email = $job[0]->company_email;
+            $job = Job::where('job_id',$request->job_id)->where('lang', $motto_locale)->first()->toArray();
+            $company_email = $job['company_email'];
+            $jobs = DB::table('job_applied')
+            ->leftjoin('jobs', 'job_applied.job_id', '=', 'jobs.job_id')
+            ->leftjoin('users', 'job_applied.user_id', '=', 'users.id')
+            ->select('users.*', 'jobs.title')
+            ->where('jobs.lang','en')
+            ->where('job_applied.id',$last_inser_id)
+            ->get();
             if (filter_var($company_email, FILTER_VALIDATE_EMAIL)) {
-                $jobs = DB::table('job_applied')
-                ->leftjoin('jobs', 'job_applied.job_id', '=', 'jobs.job_id')
-                ->leftjoin('users', 'job_applied.user_id', '=', 'users.id')
-                ->select('users.*', 'jobs.title')
-                ->where('jobs.lang','en')
-                ->where('job_applied.id',$last_inser_id)
-                ->get();
-
-                
                 $template = "emails.applyJob";
-                $subject = "Applied for a Job";
-                Mail::to($company_email)->cc(env('ADMIN_EMAIL'))->send(new VerifyMail($user,$template,$subject));
+                $subject = $userData['name']." applied for ".$job['title']." on MottoJob.";
+                $mailData['user'] = $userData;
+                $mailData['job'] = $job;
+                Mail::to($company_email)->cc(env('ADMIN_EMAIL'))->send(new VerifyMail($mailData,$template,$subject));
             }
         }
 

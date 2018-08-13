@@ -19,8 +19,8 @@
                                 <div class="search-box">
                                     <div class="form-group">
                                         <div class="icon-addon addon-lg">
-                                            <input type="text" placeholder="Job title or keyword" class="form-control" id="job_title" name="title">
-                                            <label for="email" class="fa fa-search" rel="tooltip" title="Search"></label>
+                                            <input type="text" onkeypress="return event.keyCode != 13;" placeholder="Job title or keyword" class="form-control" id="job_title" name="title">
+                                            <label for="job_title" class="fa fa-search" rel="tooltip" title="Search"></label>
                                         </div>
                                     </div>
                                 </div>
@@ -172,7 +172,7 @@
                                     <a href="{{route('jobDetails',['job_id'=>$job->job_id])}}">Show Job Details</a>
                                 </div>
                             </div>
-                            @if ($job->day_diff <= 21) 
+                            @if ($job->day_diff <= 21)
                                 <div class="ribbon">New!</div>
                             @endif
                         </div>
@@ -245,6 +245,11 @@
            $("#job_title").keyup(function (e) {
                if (e.keyCode == 13) {
                    load_data(1);
+                   e.preventDefault();
+                   return false;
+               }else{
+                 e.preventDefault();
+                 return false;
                }
            });
 

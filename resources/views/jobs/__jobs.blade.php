@@ -13,6 +13,7 @@
                 <div class="col-md-9 col-sm-9">
                     <form action="{{ route('loadDataAjax') }}" id="job_search" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
+                        <input type="hidden" name="page" value="2" id="result_page">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 hidden-xs">
                                 <div class="search-box">
@@ -28,91 +29,91 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-3 col-xs-12 p-r-6 p-media">
                                 <div class="filter-box">
-                                    <a href="#" id="jobtype">Job Type<i class="fa fa-caret-down"></i></a>
+                                    <a href="javascript:void(0);" id="jobtype">Job Type<i class="fa fa-caret-down"></i></a>
                                     <ul class="filter-menu" id="filter-menu1">
-                                        <form>
-                                            <li> 
+
+                                            <li>
                                                 <div class="form-check">
                                                     <label>
-                                                        <input type="checkbox" name="job_type[]" value="1" onclick="search_filter()"> <span class="label-text">Restaurant</span>
+                                                        <input type="checkbox" name="job_type[]" value="1" onclick="load_data(1)"> <span class="label-text">Restaurant</span>
                                                     </label>
                                                 </div>
                                             </li>
-                                            <li> 
+                                            <li>
                                                 <div class="form-check">
                                                     <label>
-                                                        <input type="checkbox" name="job_type[]" value="2" onclick="search_filter()"> <span class="label-text">Hotel & Guesthouse</span>
+                                                        <input type="checkbox" name="job_type[]" value="2" onclick="load_data(1)"> <span class="label-text">Hotel & Guesthouse</span>
                                                     </label>
                                                 </div>
                                             </li>
-                                        </form>
+
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3 col-xs-12 p-r-6 p-l-6 p-media">
                                 <div class="filter-box">
-                                    <a href="#" id="prefecture">Prefecture<i class="fa fa-caret-down"></i></a>
+                                    <a href="javascript:void(0)" id="prefecture">Prefecture<i class="fa fa-caret-down"></i></a>
                                     <ul class="filter-menu" id="filter-menu2">
-                                        
-                                            <li> 
+
+                                            <li>
                                                 <div class="form-check">
                                                     <label>
-                                                        <input type="checkbox" name="prefecture[]" value="Kyoto" onclick="search_filter()"> <span class="label-text">Kyoto</span>
+                                                        <input type="checkbox" name="prefecture[]" value="Kyoto" onclick="load_data(1)"> <span class="label-text">Kyoto</span>
                                                     </label>
                                                 </div>
                                             </li>
-                                            <li> 
+                                            <li>
                                                 <div class="form-check">
                                                     <label>
-                                                        <input type="checkbox" name="prefecture[]" value="Osaka" onclick="search_filter()"> <span class="label-text">Osaka</span>
+                                                        <input type="checkbox" name="prefecture[]" value="Osaka" onclick="load_data(1)"> <span class="label-text">Osaka</span>
                                                     </label>
                                                 </div>
                                             </li>
-                                        
+
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3 col-xs-12 p-l-6 p-media">
                                 <div class="filter-box">
-                                    <a href="#" id="level">Japanese Level<i class="fa fa-caret-down"></i></a>
+                                    <a href="javascript:void(0);" id="level">Japanese Level<i class="fa fa-caret-down"></i></a>
                                     <ul class="filter-menu" id="filter-menu3">
-                                        
-                                            <li> 
+
+                                            <li>
                                                 <div class="form-check">
                                                     <label>
                                                         <input type="checkbox" name="japanese_lavel[]" value="JLPT N1"> <span class="label-text">JLPT N1</span>
                                                     </label>
                                                 </div>
                                             </li>
-                                            <li> 
+                                            <li>
                                                 <div class="form-check">
                                                     <label>
                                                         <input type="checkbox" name="japanese_lavel[]" value="JLPT N2"> <span class="label-text">JLPT N2</span>
                                                     </label>
                                                 </div>
                                             </li>
-                                            <li> 
+                                            <li>
                                                 <div class="form-check">
                                                     <label>
                                                         <input type="checkbox" name="japanese_lavel[]" value="JLPT N3"> <span class="label-text">JLPT N3</span>
                                                     </label>
                                                 </div>
                                             </li>
-                                            <li> 
+                                            <li>
                                                 <div class="form-check">
                                                     <label>
                                                         <input type="checkbox" name="japanese_lavel[]" value="JLPT N4"> <span class="label-text">JLPT N4</span>
                                                     </label>
                                                 </div>
                                             </li>
-                                            <li> 
+                                            <li>
                                                 <div class="form-check">
                                                     <label>
                                                         <input type="checkbox" name="japanese_lavel[]" value="JLPT N5"> <span class="label-text">JLPT N5</span>
                                                     </label>
                                                 </div>
                                             </li>
-                                        
+
                                     </ul>
                                 </div>
                             </div>
@@ -127,7 +128,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 col-sm-12 hidden-md hidden-lg hidden-sm">
-                                <a href="#" class="search-job sky-blue-bg">Search</a>
+                                <button onclick="load_data(1)" class="search-job sky-blue-bg">Search</button>
                             </div>
                         </div>
                     </form>
@@ -136,9 +137,13 @@
                         @foreach($jobs as $job)
                         <div class="col-md-6 col-sm-6">
                             <div class="job-list-box">
-                                <h4>{{$job->title}}</h4>
+                                <h4>
+                                  <a href="{{route('jobDetails',['job_id'=>$job->job_id])}}">{{$job->title}}</a>
+                                </h4>
                                 <div class="job-list-thumb">
-                                    <img src="{{ asset('images/job/' . $job->image) }}" alt="MottoJob" class="img-responsive">
+                                    <a href="{{route('jobDetails',['job_id'=>$job->job_id])}}">
+                                      <img src="{{ asset('images/job/' . $job->image) }}" alt="{{$job->title}}" class="img-responsive">
+                                    </a>
                                 </div>
                                 <ul class="list-box-detail">
                                     <li>
@@ -167,11 +172,13 @@
                                     <a href="{{route('jobDetails',['job_id'=>$job->job_id])}}">Show Job Details</a>
                                 </div>
                             </div>
-                            <div class="ribbon">New!</div>
+                            @if ($job->day_diff <= 21) 
+                                <div class="ribbon">New!</div>
+                            @endif
                         </div>
                         @endforeach
                     </div>
-                    {{ $jobs->links() }}
+
                     <div class="row" id="remove-row">
                         <div class="col-md-12 col-sm-12">
                             <div class="load-more">
@@ -181,8 +188,8 @@
                         </div>
                     </div>
                 </div>
-                    
-                            
+
+
                 <!-- Right Side -->
                 <div class="col-md-3 col-sm-3">
                     <div class="work-process-box">
@@ -228,60 +235,70 @@
         $('ul.pagination').hide();
     </script>
     <script type="text/javascript">
-        $("#job_title").keyup(function (e) {
-            if (e.keyCode == 13) {
-                search_filter();
-            }
-        });
-        function search_filter() {
-            var formdata = $("#job_search").serialize();
-            $.ajax({
-               url : '{{ url("jobs/loaddata") }}',
-               method : "POST",
-               data : formdata,
-               dataType : "text",
-               success : function (data)
-               {
-                  console.log(data);
-                  if(data != '') 
-                  {
-                      $('#remove-row').remove();
-                      $('#load-data').html("");
-                      $('#load-data').append(data);
-                  }
-                  else
-                  {
-                      $('#btn-more').html("No Data");
-                  }
-               }
-           });
-        }
-    </script>
-    <script type="text/javascript">
+        var page = 2;
+
         $(document).ready(function(){
            $(document).on('click','#btn-more',function(){
-               var id = $(this).data('id');
-               //$("#btn-more").html("Loading....");
-               $.ajax({
-                   url : '{{ url("jobs/loaddata") }}',
-                   method : "POST",
-                   data : {id:id, _token:"{{csrf_token()}}"},
-                   dataType : "text",
-                   success : function (data)
-                   {
-                      if(data != '') 
-                      {
-                          $('#remove-row').remove();
-                          $('#load-data').append(data);
-                      }
-                      else
-                      {
-                          $('#btn-more').html("No Data");
-                      }
-                   }
-               });
-           });  
-        }); 
+             load_data(0);
+           });
+
+           $("#job_title").keyup(function (e) {
+               if (e.keyCode == 13) {
+                   load_data(1);
+               }
+           });
+
+        });
+
+        function load_data(new_result = 0) {
+          $("#btn-more").prop('disabled', true);
+          if(new_result == 1){
+            $("#load-data").html('');
+            $('#result_page').val(1);
+            page = 1;
+          }
+
+          var formdata = $("#job_search").serialize();
+          $.ajax({
+              url : '{{ url("jobs/loaddata") }}',
+              method : "POST",
+              data : formdata,
+              dataType : "text",
+              success : function (data){
+                if(data != ''){
+                  result        = jQuery.parseJSON(data);
+                  $(make_html(result.data,page)).appendTo('#load-data').fadeIn(1500);
+                  page++;
+                  $('#result_page').val(page);
+                  if(page > result.last_page){
+                    $("#btn-more").fadeOut();
+                  }else{
+                    $("#btn-more").removeAttr("disabled");
+                    $("#btn-more").fadeIn();
+                  }
+                }else{
+                  $('#btn-more').html("No Data");
+                }
+              }
+          });
+        }
+
+        function make_html(data,page) {
+          html = '<div id="page' + page + '" style="display:none">';
+
+          $.each(data, function(i, job) {
+            url = 'job/' + job.id;
+            if(job.day_diff <= 21) {
+                new_tag = '<div class="ribbon">New!</div>';
+            } else {
+                new_tag = '';
+            }
+            img_url = "images/job/" + job.image;
+            html  += '<div class="col-md-6 col-sm-6"><div class="job-list-box"><h4><a href="' + url + '">' + job.title + '</a></h4> <div class="job-list-thumb"><a href="' + url + '"><img src="' + img_url + '" alt="' + job.title + '" class="img-responsive"></a></div><ul class="list-box-detail"> <li> <label>Salary</label> <span>' + job.salary + '</span> </li><li> <label>Location</label> <span> <p>' + job.location + '</p></span> </li><li> <label>Japanse</label> <span>' + job.japanese_lavel + '</span> </li><li> <label>Hours</label> <span> <p>' + job.timing + '</p></span> </li></ul> <div class="show-job-detail"> <a href="' + url + '">Show Job Details</a> </div></div>'+new_tag+'</div>';
+          });
+
+          return html + '</div>';
+        }
         </script>
 
 @endsection
