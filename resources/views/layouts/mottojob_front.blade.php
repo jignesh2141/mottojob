@@ -72,7 +72,6 @@
                                 <a href="#" id="lang">{{ Auth::user()->name }}<i class="fa fa-caret-down"></i></a>
                                 <ul class="dropdown-lan">
                                     <li><a href="{{ url('/logout') }}">{{ trans('general.logout') }}</a></li>
-                                    
                                 </ul>
                             </li>
                         @endif

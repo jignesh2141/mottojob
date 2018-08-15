@@ -1,47 +1,42 @@
-@extends('layouts.app')
+@extends('layouts.mottojob_front')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form method="POST" action="{{ route('password.email') }}" aria-label="{{ __('Reset Password') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+<!--Login Form Section Start-->
+    <section class="login-form bg-gray section-padding">
+        <div class="container">
+            <div class="login-section bg-white">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                            @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+                            <div class="panel-heading">
+                                <h2 class="login-title">{{ __('Reset Password') }}</h2>
                             </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
+                            <div class="panel-body">
+                                
+                                <form method="POST" action="{{ route('password.email') }}" aria-label="{{ __('Reset Password') }}">
+                                    @csrf
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="E-mail" name="email" type="email" required autofocus>
+                                            @if ($errors->has('email'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('email') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                        <input class="btn btn-lg btn-primary" type="submit" value="{{ __('Send Password Reset Link') }}">
+                                    </fieldset>
+                                </form>
                             </div>
-                        </div>
-                    </form>
+                        
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
+    <!--Login Form Section Over-->
 @endsection
