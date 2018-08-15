@@ -61,7 +61,9 @@ class JobController extends Controller
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'phone_number' => 'required',
-                'date_of_birth' => 'required',
+                'birth_year' => 'required',
+                'birth_month' => 'required',
+                'birth_date' => 'required',
                 'nationality' => 'required',
                 'gender' => 'required',
                 'living_in_japan' => 'required',
@@ -73,7 +75,9 @@ class JobController extends Controller
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'phone_number' => 'required',
-                'date_of_birth' => 'required',
+                'birth_year' => 'required',
+                'birth_month' => 'required',
+                'birth_date' => 'required',
                 'nationality' => 'required',
                 'gender' => 'required',
                 'living_in_japan' => 'required',
@@ -109,7 +113,9 @@ class JobController extends Controller
         $user->first_name_hiragana = $request->first_name_hiragana;
         $user->last_name_hiragana = $request->last_name_hiragana;
         $user->phone_number = $request->phone_number;
-        $user->date_of_birth = date('Y-m-d H:i:s',strtotime($request->date_of_birth));
+        $user->birth_year = $request->birth_year;
+        $user->birth_month = $request->birth_month;
+        $user->birth_date = $request->birth_date;
         $user->nationality = $request->nationality;
         $user->gender = $request->gender;
         $user->living_in_japan = $request->living_in_japan;

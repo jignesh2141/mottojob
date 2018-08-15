@@ -72,6 +72,8 @@
 
                                     </ul>
                                 </div>
+                                
+                                <div class="filter-ribbon"></div>
                             </div>
                             <div class="col-md-3 col-sm-3 col-xs-12 p-l-6 p-media">
                                 <div class="filter-box">
@@ -240,6 +242,12 @@
         $(document).ready(function(){
            $(document).on('click','#btn-more',function(){
              load_data(0);
+           });
+
+           $(document).on('click','.search-job',function(){
+                load_data(1);
+                e.preventDefault();
+                return false;
            });
 
            $("#job_title").keyup(function (e) {

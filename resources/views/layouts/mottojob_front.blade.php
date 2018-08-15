@@ -41,38 +41,39 @@
                 <a href="{{ url('/') }}" class="logo"><img src="{{ asset('images/motto-job-logo.png') }}" alt="logo" /></a>
                 <nav >
                     <ul>
-                        <li><!-- <a href="#" id="lang">English<i class="fa fa-caret-down"></i></a>
-                            
-                                <ul class="dropdown-lan">
-                                    <li><a href="#">にほんご</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul> -->
-                                <form action="{{ route('manageLang') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                    <select class="selectpicker" name="motto_lang" id="motto_lang">
-                                        <option {{ Session::get('motto_locale') == "en" ? 'selected':''}} value="en">English</option>
-                                        <option {{ Session::get('motto_locale') == "ja" ? 'selected':''}} value="ja">にほんご</option>
-                                    </select>
-                                    {{ csrf_field() }}
-                                </form>
+                        <li>
+                            <!-- <a href="#" id="lang">English<i class="fa fa-caret-down"></i></a>
+                            <ul class="dropdown-lan">
+                                <li><a href="#">にほんご</a></li>
+                                <li><a href="#">English</a></li>
+                            </ul> -->
+                            <form action="{{ route('manageLang') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <select class="selectpicker" name="motto_lang" id="motto_lang">
+                                    <option {{ Session::get('motto_locale') == "en" ? 'selected':''}} value="en">English</option>
+                                    <option {{ Session::get('motto_locale') == "ja" ? 'selected':''}} value="ja">にほんご</option>
+                                </select>
+                                {{ csrf_field() }}
+                            </form>
                         </li>
                         <li class="{{ (Request::route()->getName() == 'mottojobs') ? 'active' : '' }}"><a href="{{ route('mottojobs') }}">{{ trans('general.jobs') }}</a></li>
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">{{ trans('general.login') }}</a></li>
                             <li><a href="{{ url('/register') }}" class="signup">{{ trans('general.sign_up') }}</a></li>
                         @else 
-                            <li class="dropdown">
-                                
+                            <!-- <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>{{ trans('general.logout') }}</a></li>
                                 </ul>
-                                <!-- <a href="#" id="lang">{{ Auth::user()->name }}<i class="fa fa-caret-down"></i></a>
-                            
+                            </li> -->
+                            <li>
+                                <a href="#" id="lang">{{ Auth::user()->name }}<i class="fa fa-caret-down"></i></a>
                                 <ul class="dropdown-lan">
-                                    <li><a href="{{ url('/logout') }}">Logout</a></li>
-                                </ul> -->
+                                    <li><a href="{{ url('/logout') }}">{{ trans('general.logout') }}</a></li>
+                                    
+                                </ul>
                             </li>
                         @endif
                     </ul>

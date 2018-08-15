@@ -21,7 +21,7 @@
                         <div class="col-md-12 no-padding">
                             <div class="form-group">
                                 <label class="control-label">First Name<span class="required">*</span></label>
-                                <input type="text" class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}" placeholder="Enter First Name" name="first_name" value="{{ @$old->first_name }}"  required />
+                                <input type="text" class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}" placeholder="Enter First Name" name="first_name" value="{{ @$old->first_name ? @$old->first_name : old('first_name') }}"  required />
                                 @if ($errors->has('first_name'))
                                     <span class="invalid-feedback text-danger" role="alert">
                                         <strong>{{ $errors->first('first_name') }}</strong>
@@ -30,11 +30,11 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label">First Name in hiragana</label>
-                                <input type="text" class="form-control" placeholder="First Name in hiragana" name="first_name_hiragana" value="{{ @$old->first_name_hiragana }}" />
+                                <input type="text" class="form-control" placeholder="First Name in hiragana" name="first_name_hiragana" value="{{ @$old->first_name_hiragana ? @$old->first_name_hiragana : old('first_name_hiragana') }}" />
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Last Name<span class="required">*</span></label>
-                                <input type="text" class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}" placeholder="Enter Last Name" name="last_name" value="{{ @$old->last_name }}" required />
+                                <input type="text" class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}" placeholder="Enter Last Name" name="last_name" value="{{ @$old->last_name ? @$old->last_name : old('last_name') }}" required />
                                 @if ($errors->has('last_name'))
                                     <span class="invalid-feedback text-danger" role="alert">
                                         <strong>{{ $errors->first('last_name') }}</strong>
@@ -43,11 +43,11 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Last Name in hiragana</label>
-                                <input type="text" class="form-control" placeholder="Last Name in hiragana" name="last_name_hiragana" value="{{ @$old->last_name_hiragana }}" />
+                                <input type="text" class="form-control" placeholder="Last Name in hiragana" name="last_name_hiragana" value="{{ @$old->last_name_hiragana ? @$old->last_name_hiragana : old('last_name_hiragana') }}" />
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Phone number<span class="required">*</span></label>
-                                <input type="mobile" class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}" placeholder="Phone number" name="phone_number" value="{{ @$old->phone_number }}" required />
+                                <input type="mobile" class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}" placeholder="Phone number" name="phone_number" value="{{ @$old->phone_number ? @$old->phone_number : old('phone_number') }}" required />
                                 @if ($errors->has('phone_number'))
                                     <span class="invalid-feedback text-danger" role="alert">
                                         <strong>{{ $errors->first('phone_number') }}</strong>
@@ -56,7 +56,30 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Date of birth<span class="required">*</span></label>
-                                <input type="text" id="date" data-format="DD-MM-YYYY" class="form-control" placeohlder="DD-MM-YYYY" data-template="D MMM YYYY" name="date_of_birth" value="{{ @$old->date_of_birth }}" required>
+                                <div class="col-md-4 no-padding">
+                                    <select class="form-control {{ $errors->has('birth_year') ? 'is-invalid' : '' }}" name="birth_year" required>
+                                        <option value="" selected></option>
+                                        @for ($i = 1970; $i <= 2018; $i++)
+                                        <option {{ @$old->birth_year == $i ? 'selected':''}}  value="{{$i}}">{{$i}}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <select class="form-control col-md-2 {{ $errors->has('birth_month') ? 'is-invalid' : '' }}" name="birth_year" required>
+                                        <option value="" selected></option>
+                                        @for ($i = 01; $i <= 12; $i++)
+                                        <option {{ @$old->birth_month == $i ? 'selected':''}}  value="{{$i}}">{{$i}}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <select class="form-control col-md-2 {{ $errors->has('birth_date') ? 'is-invalid' : '' }}" name="birth_year" required>
+                                        <option value="" selected></option>
+                                        @for ($i = 01; $i <= 31; $i++)
+                                        <option {{ @$old->birth_date == $i ? 'selected':''}}  value="{{$i}}">{{$i}}</option>
+                                        @endfor
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Nationality<span class="required">*</span></label>
@@ -70,14 +93,18 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Gender<span class="required">*</span></label>
-                                <label class="checkbox-inline"><input type="radio" name="gender" {{ @$old->gender == "1" ? 'checked':''}} value="1">Male</label>
-                                <label class="checkbox-inline"><input type="radio" name="gender" {{ @$old->gender == "2" ? 'checked':''}} value="2">Female</label>
-                                <label class="checkbox-inline"><input type="radio" name="gender" {{ @$old->gender == "3" ? 'checked':''}} value="3">Others</label>
+
+                                <label class="checkbox-inline"><input type="radio" name="gender" {{ @$old->gender == "1" ? 'checked':''}} value="1"><span class="label-text">Male</span></label>
+
+                                <label class="checkbox-inline"><input type="radio" name="gender" {{ @$old->gender == "2" ? 'checked':''}} value="2"><span class="label-text">FeMale</span></label>
+
+                                <label class="checkbox-inline"><input type="radio" name="gender" {{ @$old->gender == "3" ? 'checked':''}} value="3"><span class="label-text">Others</span></label>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Are you currently living in Japan ? <span class="required">*</span></label>
-                                <label class="checkbox-inline"><input type="radio" name="living_in_japan" {{ @$old->living_in_japan == "1" ? 'checked':''}} value="1">Yes</label>
-                                <label class="checkbox-inline"><input type="radio" name="living_in_japan" {{ @$old->living_in_japan == "2" ? 'checked':''}} value="2">No</label>
+                                <label class="checkbox-inline"><input type="radio" name="living_in_japan" {{ @$old->living_in_japan == "1" ? 'checked':''}} value="1"><span class="label-text">Yes</span></label>
+
+                                <label class="checkbox-inline"><input type="radio" name="living_in_japan" {{ @$old->living_in_japan == "2" ? 'checked':''}} value="2"><span class="label-text">No</span></label>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Prefecture<span class="required">*</span></label>
