@@ -1,0 +1,86 @@
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Validation Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines contain the default error messages used by
+    | the validator class. Some of these rules have multiple versions such
+    | as the size rules. Feel free to tweak each of these messages here.
+    |
+    */
+
+    'job'                           => 'ジョブ',
+    'jobs'                          => '求人',
+    'add_new'                       => '新しく追加する',
+    'title'                         => 'タイトル',
+    'prefecture'                    => '県',
+    'japanese_lavel'                => '和歌山県',
+    'location'                      => 'ロケーション',
+    'action'                        => 'アクション',
+    'edit'                          => '編集',
+    'delete'                        => '削除',
+    'add'                           => '追加する',
+    'submit'                        => '提出する',
+    'cancel'                        => 'キャンセル',         
+    'corporate_name'                => '会社名',
+    'restaurant'                    => 'レストラン',
+    'designation'                   => '指定',
+    'type'                          => 'タイプ',
+    'description'                   => '説明',
+    'requirements'                  => '要件',
+    'no_of_vacancy'                 => '欠員数',
+    'minimum_working_days_per_week' => '1週間あたりの労働日数の最小値',
+    'minimum_working_hours_per_day' => '1日あたりの最小労働時間',
+    'community_expenses'            => 'コミュニティ費用',
+    'benefits'                      => '利点',
+    'salary'                        => '給料',
+    'salary_duration'               => '給与所要時間',
+    'timing'                        => 'タイミング',
+    'company_email'                 => '会社の電子メール',
+    'user_name'                     => '名',
+    'user_email'                    => 'Eメール',
+    'created_at'                    => '作成日',
+    'image'                         => '画像',
+    'lat_long'                      => '緯度/経度',
+    'latitude'                      => '緯度',
+    'longitude'                     => '経度',
+    'apply_job'                     => 'この仕事に応募する',
+    'personal'                      => 'パーソナル',
+    'first_name'                    => 'ファーストネーム',
+    'first_name_hir'                => 'ひらがなの名字',
+    'last_name'                     => '苗字',
+    'last_name_hir'                 => 'ひらがなの姓',
+    'phone_number'                  => '電話番号',
+    'date_of_birth'                 => '生年月日',
+    'nationality'                   => '国籍',
+    'gender'                        => '性別',
+    'living_in_japan'               => 'あなたは現在日本に住んでいますか？',
+    'visa'                          => 'ビザ',
+    'account'                       => 'アカウント',
+    'username'                      => 'ユーザー名',
+    'email'                         => 'Eメール',
+    'password'                      => 'パスワード',
+    'verify_pass'                   => 'パスワードを照合します',
+    'msg_employer'                  => '雇用者へのメッセージ',
+    'before_job'                    => 'あなたはこの仕事に応募する前に雇用者が知りたいことがありますか？',
+    'other'                         => 'その他（日本語)',
+    'apply'                         => '適用',
+    'by_applying'                   => 'この仕事に応募することで、私はBunpoに同意します',
+    'and'                           => 'そして',
+    'please_select'                 => '選んでください',
+    'thanks_msg'                    => 'ありがとうございました。 あなたのアプリケーションは正常に提出されました。',
+    'interview_process'             => 'インタビューのプロセス',
+    'interview_date'                => '1.インタビューの日付を決定する',
+    'interview_date_desc'           => '会社は電子メールで連絡したり、数日以内に電話します。電子メールの場合、電子メールにリンクされている登録フォームからインタビューの日付を登録する必要があります。 電話の場合は、店長と連絡してインタビューの日付を決めなければなりません。 あなたが数日後に会社からの電子メールと電話を受けていないと、あなたは会社によって拒否されるかもしれません。',
+    'interview_prepare'             => 'インタビューの準備をする',
+    'interview_prepare_desc'        => 'あなたは面接を取るために日本語のCVを準備する必要があります。 なぜマネージャーに良い印象を与える会社のために働くことを書いてくださいあなたはまた、インタビューに行くときに布に注意する必要があります。 あなたは正式なスタイルでなければなりません。 予約した時間の5~10分前に到着することに注意してください。',
+    'interview_take'                => '3.インタビューをする',
+    'interview_take_desc'           => '質問にはっきりと答えなければなりません。 それからあなたは仕事に動機を与えていることを示すことによって、良い印象を与えることができます。 交通費、シフト時間などについて何か質問する必要があります。 インタビューの結果は1週間以内に通知されます。',
+    'interview_after'               => '4.インタビュー後',
+    'interview_after_desc'          => 'あなたの成功を知らせる電話またはEメールが届いたら、あなたが仕事を始めて何を持って来るかを尋ねるべきです。 却下された場合は、別の仕事に応募する必要があります。',
+    'ok'                            => 'はい',
+];
