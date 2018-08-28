@@ -27,7 +27,7 @@
                                     <fieldset>
                                         @if ($errors->has('email'))
                                             <div class="form-group">
-                                                <span class="invalid-feedback" role="alert">
+                                                <span class="invalid-feedback login-error" role="alert">
                                                     <strong>Oops! That email/password combination is not valid.</strong>
                                                 </span>
                                             </div>
@@ -57,7 +57,7 @@
                                     </fieldset>
                                 </form>
                             </div>
-                        
+
                     </div>
                 </div>
             </div>

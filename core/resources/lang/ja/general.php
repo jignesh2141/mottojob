@@ -41,4 +41,9 @@ return [
     'pay'                   => '支払う',
     'job'                   => 'ジョブ',
     'hours'                 => '時間',
+    'terms of service'      => '利用規約',
+    'privacy policy'        => '個人情報保護方針',
+    'year'                  => '年',
+    'month'                 => '月',
+    'day'                   => '日',
 ];

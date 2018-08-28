@@ -41,4 +41,9 @@ return [
     'pay'                   => 'Pay',
     'job'                   => 'Job',
     'hours'                 => 'Hours',
+    'terms of service'      => 'Terms of service',
+    'privacy policy'        => 'Privacy Policy',
+    'year'                  => 'Year',
+    'month'                 => 'Month',
+    'day'                   => 'Day',
 ];

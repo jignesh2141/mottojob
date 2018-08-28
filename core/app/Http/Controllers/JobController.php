@@ -159,6 +159,7 @@ class JobController extends Controller
     public function loadDataAjax(Request $request)
     {
       // dd($request->all());
+        //dd($job_type = implode(",", $request->job_type));
         $output = '';
         $motto_locale = Session::get('motto_locale');
 
@@ -171,16 +172,17 @@ class JobController extends Controller
             $jobs->where("title","like","%".$request->title."%");
         }
         if($request->job_type != ""){
-            $job_type = implode(",", $request->job_type);
-            $jobs->whereIn('job_type', array($job_type));
+            //echo "<pre>"; print_r($request->job_type);exit;
+            //$job_type = implode(",", $request->job_type);
+            $jobs->whereIn('job_type', $request->job_type);
         }
         if($request->prefecture != ""){
-            $prefecture = implode(",", $request->prefecture);
-            $jobs->whereIn('prefecture', array($prefecture));
+            //$prefecture = implode(",", $request->prefecture);
+            $jobs->whereIn('prefecture', $request->prefecture);
         }
         if($request->japanese_lavel != ""){
-            $japanese_lavel = implode(",", $request->japanese_lavel);
-            $jobs->whereIn('japanese_lavel', array($japanese_lavel));
+            //$japanese_lavel = implode(",", $request->japanese_lavel);
+            $jobs->whereIn('japanese_lavel', $request->japanese_lavel);
         }
 
         $jobs->orderBy('id','desc');
